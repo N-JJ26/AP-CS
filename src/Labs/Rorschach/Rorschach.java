@@ -57,14 +57,19 @@ public class Rorschach
     private char[][] left()
     {
         char[][] folded = new char[ seed.length ][ 2 * seed[0].length ];
+        char[][] flipped = new char[ seed.length ][ seed[0].length ];
+
+        for( int i = 0; i < flipped.length; i++ )
+            for( int j = 0; j < flipped.length; j++ )
+                flipped[ i ][ j ] = seed[ i ][ seed[0].length - 1 - j];
 
         for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < folded[0].length / 2 + 1; j-- )
-                folded[ i ][ folded.length / 2 - j ] = seed[ i ][ j ];
-                
+            for( int j = 0; j < folded[0].length / 2; j++ )
+                folded[ i ][ j ] = flipped[ i ][ j ];
+
         for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < folded.length; j++ )
-                folded[ i ][ folded[0].length / 2 - 1 + j ] = seed[ i ][ j ];
+            for( int j = 0; j < seed[0].length; j++ )
+                folded[ i ][ folded[0].length / 2 + j ] = seed[ i ][ j ];
 
         return folded;
     }
