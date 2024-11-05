@@ -18,9 +18,7 @@ public class Rorschach
     private static Rorschach rorschach = new Rorschach();
 
     /**
-     * JAVADOC
-     *
-     * @param args
+     * The main entry point of the Rorschach lab. Runs the program
      */
     public static void main(String[] args /*REMOVE THIS */)
     {
@@ -30,18 +28,24 @@ public class Rorschach
             while( true )
             {
                 switch( ui.getFold() )
-                    {
-                        case 'L':
-                            rorschach.seed = rorschach.left();
-                            ui.display( rorschach.seed );
-                            break;
-                        case 'R':
-                            break;
-                        case 'T':
-                            break;
-                        default:
-                            break;
-                    }
+                {
+                    case 'l':
+                        rorschach.seed = rorschach.left();
+                        ui.display( rorschach.seed );
+                        break;
+                    case 'r':
+                        rorschach.seed = rorschach.right();
+                        ui.display( rorschach.seed );
+                        break;
+                    case 't':
+                        rorschach.seed = rorschach.top();
+                        ui.display( rorschach.seed );
+                        break;
+                    default:
+                        rorschach.seed = rorschach.bottom();
+                        ui.display( rorschach.seed );
+                        break;
+                }
                 if( !ui.continueFolding() )
                     break;
             }
@@ -53,13 +57,22 @@ public class Rorschach
     private char[][] left()
     {
         char[][] folded = new char[ seed.length ][ 2 * seed[0].length ];
-        
+
+        for( int i = 0; i < folded.length; i++ )
+            for( int j = 0; j < folded[0].length / 2 + 1; j-- )
+                folded[ i ][ folded.length / 2 - j ] = seed[ i ][ j ];
+                
+        for( int i = 0; i < folded.length; i++ )
+            for( int j = 0; j < folded.length; j++ )
+                folded[ i ][ folded[0].length / 2 - 1 + j ] = seed[ i ][ j ];
+
         return folded;
     }
 
     private char[][] right()
     {
         char[][] folded = new char[ seed.length ][ 2 * seed[0].length ];
+
         return folded;
     }
 
