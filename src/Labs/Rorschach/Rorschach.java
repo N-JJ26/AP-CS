@@ -11,6 +11,8 @@ public class Rorschach
     /*TODO:
      * remove the parameters and the package declaration
      * get methods working
+     *  top()
+     *  bottom()
      * find errors
      */
     private char[][] seed;
@@ -56,51 +58,90 @@ public class Rorschach
 
     private char[][] left()
     {
-        char[][] folded = new char[ seed.length ][ 2 * seed[0].length ];
-        char[][] flipped = new char[ seed.length ][ seed[0].length ];
-
-        for( int i = 0; i < flipped.length; i++ )
-            for( int j = 0; j < flipped[0].length; j++ )
-                flipped[ i ][ j ] = seed[ i ][ seed[0].length - 1 - j];
+        char[][] folded = new char[ seed.length ][ 2 * seed[ 0 ].length ];
+        char[][] flipped = horizontalFlip();
 
         for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < seed[0].length; j++ )
+            for( int j = 0; j < seed[ 0 ].length; j++ )
                 folded[ i ][ j ] = flipped[ i ][ j ];
 
         for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < seed[0].length; j++ )
-                folded[ i ][ seed[0].length + j ] = seed[ i ][ j ];
+            for( int j = 0; j < seed[ 0 ].length; j++ )
+                folded[ i ][ seed[ 0 ].length + j ] = seed[ i ][ j ];
 
         return folded;
     }
 
     private char[][] right()
     {
-        char[][] folded = new char[ seed.length ][ 2 * seed[0].length ];
-        char[][] flipped = new char[ seed.length ][ seed[0].length ];
-
-        for( int i = 0; i < flipped.length; i++ )
-            for( int j = 0; j < flipped[0].length; j++ )
-                flipped[ i ][ j ] = seed[ i ][ seed[0].length - 1 - j];
+        char[][] folded = new char[ seed.length ][ 2 * seed[ 0 ].length ];
+        char[][] flipped = horizontalFlip();
 
         for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < seed[0].length; j++ )
+            for( int j = 0; j < seed[ 0 ].length; j++ )
                 folded[ i ][ j ] = seed[ i ][ j ];
 
         for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < seed[0].length; j++ )
-                folded[ i ][ seed[0].length + j ] = flipped[ i ][ j ];
+            for( int j = 0; j < seed[ 0 ].length; j++ )
+                folded[ i ][ seed[ 0 ].length + j ] = flipped[ i ][ j ];
 
         return folded;
     }
 
+    private char[][] horizontalFlip()
+    {
+        char[][] flipped = new char[ seed.length ][ seed[ 0 ].length ];
+
+        for( int i = 0; i < flipped.length; i++ )
+            for( int j = 0; j < flipped[ 0 ].length; j++ )
+                flipped[ i ][ j ] = seed[ i ][ seed[ 0 ].length - 1 - j];
+
+        return flipped;
+    }
+
     private char[][] top()
     {
-        return null;
+        char[][] folded = new char[ 2 * seed.length ][ seed[ 0 ].length ];
+        char[][] flipped = new char[ seed.length ][ seed[ 0 ].length ];
+
+        for( int i = 0; i < flipped.length; i++ )
+            for( int j = 0; j < flipped[ 0 ].length; j++ )
+                flipped[ i ][ j ] = seed[ seed[ 0 ].length - 1 - i ][ j ];
+
+        for( int i = 0; i < folded.length; i++ )
+            for( int j = 0; j < seed[ 0 ].length; j++ )
+                folded[ i ][ j ] = seed[ i ][ j ];
+
+        for( int i = 0; i < folded.length; i++ )
+            for( int j = 0; j < seed[ 0 ].length; j++ )
+                folded[ seed[ 0 ].length + i ][ j ] = flipped[ i ][ j ];
+
+        return flipped;
     }
 
     private char[][] bottom()
     {
-        return null;
+        char[][] folded = new char[ 2 * seed.length ][ seed[ 0 ].length ];
+        char[][] flipped = verticalFlip();
+
+        for( int i = 0; i < seed.length; i++ )
+            for( int j = 0; j < folded[ 0 ].length; j++ )
+                folded[ i ][ j ] = seed[ i ][ j ];
+
+        for( int i = seed.length; i < folded.length; i++ )
+            for( int j = 0; j < folded[ 0 ].length; j++ )
+                folded[ seed.length + i ][ j ] = flipped[ seed.length - 1 - i ][ j ];
+
+        return folded;
+    }
+
+    private char[][] verticalFlip()
+    {
+        char[][] flipped = new char[ seed.length ][ seed[ 0 ].length ];
+
+        flipped[ 0 ] = seed[ 1 ];
+        flipped[ 1 ] = seed[ 0 ];
+
+        return flipped;
     }
 }
