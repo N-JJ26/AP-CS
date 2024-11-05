@@ -12,14 +12,12 @@ public class UI
 {
     /*TODO:
      * remove the package declaration
-     * find errors
-     * javadoc
      */
     private Scanner in;
     private char[][] pattern;
 
     /**
-     * JAVADOC
+     * Instantiates the UI object
      */
     public UI()
     {
@@ -27,8 +25,10 @@ public class UI
     }
 
     /**
-     * JAVADOC
-     * @return
+     * Prompts the user for a # of rows and columns, and then asks for a pattern
+     *  of "*" and " "
+     *
+     * @return the pattern of "*" and " " from the user
      */
     public char[][] getPattern()
     {
@@ -58,8 +58,9 @@ public class UI
     }
 
     /**
-     * JAVADOC
-     * @return
+     * Asks the user if they want to continue the program
+     *
+     * @return true if they want to continue the program, false otherwise
      */
     public boolean continueProgram()
     {
@@ -72,8 +73,9 @@ public class UI
     }
 
     /**
-     * JAVADOC
-     * @return
+     * Asks the user if they want to continue the folding
+     *
+     * @return true if they want to continue the folding, false otherwise
      */
     public boolean continueFolding()
     {
@@ -86,8 +88,10 @@ public class UI
     }
 
     /**
-     * JAVADOC
-     * @return
+     * Asks the user whether they want to fold the pattern left, right, up, or down
+     *
+     * @return a char that tells the program which fold to do
+     *  i.e. 'l' for left, or 'r' for right
      */
     public char getFold()
     {
@@ -98,8 +102,9 @@ public class UI
     }
 
     /**
-     * JAVADOC
-     * @param pattern
+     * Displays the pattern
+     *
+     * @param pattern the 2D array to be printed
      */
     public void display( char[][] pattern )
     {
