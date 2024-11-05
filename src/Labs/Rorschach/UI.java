@@ -64,7 +64,8 @@ public class UI
      */
     public boolean continueProgram()
     {
-        System.out.print( "Would you like to create another \"Rorschach\" pattern?  " );
+        System.out.print( "Would you like to create another \"Rorschach\" pattern" +
+                            " Y/N?      ");
 
         if( in.nextLine().toLowerCase().charAt (0 ) == 'y')
             return true;
@@ -79,7 +80,7 @@ public class UI
      */
     public boolean continueFolding()
     {
-        System.out.print( "Would you like to \"fold\" it again?   " );
+        System.out.print( "Would you like to \"fold\" it again Y/N?     " );
 
         if( in.nextLine().toLowerCase().charAt( 0 ) == 'y')
             return true;
