@@ -60,16 +60,16 @@ public class Rorschach
         char[][] flipped = new char[ seed.length ][ seed[0].length ];
 
         for( int i = 0; i < flipped.length; i++ )
-            for( int j = 0; j < flipped.length; j++ )
+            for( int j = 0; j < flipped[0].length; j++ )
                 flipped[ i ][ j ] = seed[ i ][ seed[0].length - 1 - j];
 
         for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < folded[0].length / 2; j++ )
+            for( int j = 0; j < seed[0].length; j++ )
                 folded[ i ][ j ] = flipped[ i ][ j ];
 
         for( int i = 0; i < folded.length; i++ )
             for( int j = 0; j < seed[0].length; j++ )
-                folded[ i ][ folded[0].length / 2 + j ] = seed[ i ][ j ];
+                folded[ i ][ seed[0].length + j ] = seed[ i ][ j ];
 
         return folded;
     }
@@ -80,7 +80,7 @@ public class Rorschach
         char[][] flipped = new char[ seed.length ][ seed[0].length ];
 
         for( int i = 0; i < flipped.length; i++ )
-            for( int j = 0; j < flipped.length; j++ )
+            for( int j = 0; j < flipped[0].length; j++ )
                 flipped[ i ][ j ] = seed[ i ][ seed[0].length - 1 - j];
 
         for( int i = 0; i < folded.length; i++ )
@@ -88,8 +88,8 @@ public class Rorschach
                 folded[ i ][ j ] = seed[ i ][ j ];
 
         for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < folded[0].length / 2; j++ )
-                folded[ i ][ folded[0].length / 2 + j ] = flipped[ i ][ j ];
+            for( int j = 0; j < seed[0].length; j++ )
+                folded[ i ][ seed[0].length + j ] = flipped[ i ][ j ];
 
         return folded;
     }
