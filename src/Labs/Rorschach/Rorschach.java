@@ -10,9 +10,6 @@ public class Rorschach
 {
     /*TODO:
      * remove the parameters and the package declaration
-     * get methods working
-     *  top()
-     *  bottom()
      * find errors
      */
     private char[][] seed;

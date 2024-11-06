@@ -98,8 +98,16 @@ public class UI
     {
         System.out.print( "Choose from the following \"folds\" to apply to your"
                         +" seed pattern:\n(L)eft, (R)ight, (T)op, or (B)ottom?   " );
+
+        char answer = in.nextLine().toLowerCase().charAt( 0 );
         
-        return in.nextLine().toLowerCase().charAt( 0 );
+        while( !( answer == 'l' || answer == 'r' || answer == 't' || answer == 'b') )
+        {
+            System.out.print( "INVALID ANSWER, TRY AGAIN:   " );
+            answer = in.nextLine().toLowerCase().charAt( 0 );
+        }
+
+        return answer;
     }
 
     /**
