@@ -27,9 +27,10 @@ public class Rorschach
         while( true )
         {
             rorschach.seed = ui.getPattern();
-            ui.display( rorschach.seed );
             while( true )
             {
+                System.out.println();
+                ui.display( rorschach.seed );
                 switch( ui.getFold() )
                 {
                     case 'l':
@@ -60,7 +61,7 @@ public class Rorschach
     private char[][] left()
     {
         char[][] folded = new char[ seed.length ][ 2 * seed[ 0 ].length ];
-        char[][] flipped = horizontalFlip();
+        char[][] flipped = horizontalFlip( seed );
 
         for( int i = 0; i < folded.length; i++ )
             for( int j = 0; j < seed[ 0 ].length; j++ )
@@ -76,7 +77,7 @@ public class Rorschach
     private char[][] right()
     {
         char[][] folded = new char[ seed.length ][ 2 * seed[ 0 ].length ];
-        char[][] flipped = horizontalFlip();
+        char[][] flipped = horizontalFlip( seed );
 
         for( int i = 0; i < folded.length; i++ )
             for( int j = 0; j < seed[ 0 ].length; j++ )
@@ -89,21 +90,21 @@ public class Rorschach
         return folded;
     }
 
-    private char[][] horizontalFlip()
+    private char[][] horizontalFlip( char[][] pattern )
     {
-        char[][] flipped = new char[ seed.length ][ seed[ 0 ].length ];
+        pattern = new char[ seed.length ][ seed[ 0 ].length ];
 
-        for( int i = 0; i < flipped.length; i++ )
-            for( int j = 0; j < flipped[ 0 ].length; j++ )
-                flipped[ i ][ j ] = seed[ i ][ seed[ 0 ].length - 1 - j];
+        for( int i = 0; i < pattern.length; i++ )
+            for( int j = 0; j < pattern[ 0 ].length; j++ )
+                pattern[ i ][ j ] = seed[ i ][ seed[ 0 ].length - 1 - j];
 
-        return flipped;
+        return pattern;
     }
 
     private char[][] top()
     {
         char[][] folded = new char[ 2 * seed.length ][ seed[ 0 ].length ];
-        char[][] flipped = verticalFlip();
+        char[][] flipped = verticalFlip( seed );
 
         for( int i = 0; i < seed.length; i++ )
             for( int j = 0; j < folded[ 0 ].length; j++ )
@@ -120,7 +121,7 @@ public class Rorschach
     private char[][] bottom()
     {
         char[][] folded = new char[ 2 * seed.length ][ seed[ 0 ].length ];
-        char[][] flipped = verticalFlip();
+        char[][] flipped = verticalFlip( seed );
 
         for( int i = 0; i < seed.length; i++ )
             for( int j = 0; j < folded[ 0 ].length; j++ )
@@ -133,13 +134,14 @@ public class Rorschach
         return folded;
     }
 
-    private char[][] verticalFlip()
+    private char[][] verticalFlip( char[][] pattern )
     {
-        char[][] flipped = new char[ seed.length ][ seed[ 0 ].length ];
+        pattern = new char[ seed.length ][ seed[ 0 ].length ];
 
-        flipped[ 0 ] = seed[ 1 ];
-        flipped[ 1 ] = seed[ 0 ];
+        for( int i = 0; i < pattern.length; i++ )
+            for( int j = 0; j < pattern[ 0 ].length; j++ )
+                pattern[ i ][ j ] = seed[ seed.length - 1 - i ][ j ];
 
-        return flipped;
+        return pattern;
     }
 }
