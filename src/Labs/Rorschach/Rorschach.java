@@ -27,6 +27,7 @@ public class Rorschach
         while( true )
         {
             rorschach.seed = ui.getPattern();
+            ui.display( rorschach.seed );
             while( true )
             {
                 switch( ui.getFold() )
@@ -102,21 +103,18 @@ public class Rorschach
     private char[][] top()
     {
         char[][] folded = new char[ 2 * seed.length ][ seed[ 0 ].length ];
-        char[][] flipped = new char[ seed.length ][ seed[ 0 ].length ];
+        char[][] flipped = verticalFlip();
 
-        for( int i = 0; i < flipped.length; i++ )
-            for( int j = 0; j < flipped[ 0 ].length; j++ )
-                flipped[ i ][ j ] = seed[ seed[ 0 ].length - 1 - i ][ j ];
+        for( int i = 0; i < seed.length; i++ )
+            for( int j = 0; j < folded[ 0 ].length; j++ )
+                folded[ i ][ j ] = flipped[ i ][ j ];
 
-        for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < seed[ 0 ].length; j++ )
-                folded[ i ][ j ] = seed[ i ][ j ];
+        for( int i = 0; i < seed.length; i++ )
+            for( int j = 0; j < folded[ 0 ].length; j++ )
+                folded[ seed.length + i ][ j ] = seed[ i ][ j ];
 
-        for( int i = 0; i < folded.length; i++ )
-            for( int j = 0; j < seed[ 0 ].length; j++ )
-                folded[ seed[ 0 ].length + i ][ j ] = flipped[ i ][ j ];
 
-        return flipped;
+        return folded;
     }
 
     private char[][] bottom()
@@ -128,9 +126,9 @@ public class Rorschach
             for( int j = 0; j < folded[ 0 ].length; j++ )
                 folded[ i ][ j ] = seed[ i ][ j ];
 
-        for( int i = seed.length; i < folded.length; i++ )
+        for( int i = 0; i < seed.length; i++ )
             for( int j = 0; j < folded[ 0 ].length; j++ )
-                folded[ seed.length + i ][ j ] = flipped[ seed.length - 1 - i ][ j ];
+                folded[ seed.length + i ][ j ] = flipped[ i ][ j ];
 
         return folded;
     }
