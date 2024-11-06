@@ -3,10 +3,11 @@ package src.Labs.Rorschach; //REMOVE THIS
 import java.util.Scanner;
 
 /**
- * JAVADOC GOES HERE
+ * The User Interface for the Rorschach program, displays and gets all the patterns
+ *  from the user
  *
  * @author Nate Johnson
- * @version 10/31/24
+ * @version 11/6/24
  */
 public class UI
 {

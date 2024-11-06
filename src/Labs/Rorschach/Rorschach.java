@@ -1,16 +1,16 @@
 package src.Labs.Rorschach; //REMOVE THIS
 
 /**
- * JAVADOC GOES HERE
+ * Runs the Rorschach program, folds a pattern given by the user a specific direction,
+ *  also specified by the user
  *
  * @author Nate Johnson
- * @version 10/31/24
+ * @version 11/6/24
  */
 public class Rorschach
 {
     /*TODO:
      * remove the parameters and the package declaration
-     * find errors
      */
     private char[][] seed;
     private static UI ui = new UI();
