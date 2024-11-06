@@ -36,9 +36,23 @@ public class UI
         int rows = in.nextInt();
         in.nextLine();
 
+        while( rows <= 0 )
+        {
+            System.out.print( "INVALID ANSWER, TRY AGAIN:   " );
+            rows = in.nextInt();
+            in.nextLine();
+        }
+
         System.out.print( "Enter the amount of columns:   " );
         int cols = in.nextInt();
         in.nextLine();
+
+        while( cols <= 0 )
+        {
+            System.out.print( "INVALID ANSWER, TRY AGAIN:   " );
+            cols = in.nextInt();
+            in.nextLine();
+        }
 
         pattern = new char[ rows ][ cols ];
 
