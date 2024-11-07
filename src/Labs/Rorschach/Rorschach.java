@@ -1,5 +1,3 @@
-package src.Labs.Rorschach; //REMOVE THIS
-
 /**
  * Runs the Rorschach program, folds a pattern given by the user a specific direction,
  *  also specified by the user
@@ -9,9 +7,6 @@ package src.Labs.Rorschach; //REMOVE THIS
  */
 public class Rorschach
 {
-    /*TODO:
-     * remove the parameters and the package declaration
-     */
     private char[][] seed;
     private static UI ui = new UI();
     private static Rorschach rorschach = new Rorschach();

@@ -1,5 +1,3 @@
-package src.Labs.Rorschach; //REMOVE THIS
-
 import java.util.Scanner;
 
 /**
@@ -11,9 +9,6 @@ import java.util.Scanner;
  */
 public class UI
 {
-    /*TODO:
-     * remove the package declaration
-     */
     private Scanner in;
     private char[][] pattern;
 
