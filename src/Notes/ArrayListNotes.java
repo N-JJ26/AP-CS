@@ -37,5 +37,7 @@ public class ArrayListNotes {
         //adds 5 "lockers" once the size has been filled, starting with 10
 
         arrayList1.toString(); //[0, 1, 2, ...]
+
+        //cannot use set() to an empty array
     }
 }
