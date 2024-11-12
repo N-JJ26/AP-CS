@@ -21,8 +21,8 @@ public class ArrayListNotes {
      * java.util.ArrayList
      */
 
-    //static ArrayList<String> arrayList1 = new ArrayList<String>(); //must use objects
-    //static ArrayList<Character> arrayList2 = new ArrayList<Character>();
+    //ArrayList<String> arrayList1 = new ArrayList<String>(); //must use objects
+    //ArrayList<Character> arrayList2 = new ArrayList<Character>();
 
     /*
      * Boolean
