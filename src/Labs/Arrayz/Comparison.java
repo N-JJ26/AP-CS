@@ -23,17 +23,5 @@ public class Comparison
     {
         list = new ArrayList< Character >();
         arrayz = new Arrayz();
-
-        arrayz.testingStarter();
-        System.out.println(arrayz);
-
-        arrayz.add(6, 'u');
-        System.out.println(arrayz);
-
-        arrayz.remove('u');
-        System.out.println(arrayz);
-
-        arrayz.remove('a');
-        System.out.println(arrayz);
     }
 }
