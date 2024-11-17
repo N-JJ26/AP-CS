@@ -204,8 +204,10 @@ public class Arrayz
     public String toString()
     {
         String str = "[" + charArray[ 0 ];
+
         for(int i = 1; charArray[ i ] != ' '; i++)
             str += ", " + charArray[ i ];
+
         str += "]";
         return str;
     }
