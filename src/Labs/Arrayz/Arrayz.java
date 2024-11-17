@@ -83,8 +83,10 @@ public class Arrayz
      */
     public char set( int index, char element )
     {
-        
-        return charArray[ index ];
+        char previous = charArray[ index ];
+        charArray[ index ] = element;
+
+        return previous;
     }
 
     /**
@@ -137,7 +139,19 @@ public class Arrayz
      */
     public boolean add( char element )
     {
-        return false;
+        char[] newArray = new char[ charArray.length + INCREMENT ];
+        if( charArray[ this.size() ] != ' ' )
+        {
+            for( int i = 0; i < this.size(); i++ )
+                newArray[ i ] = charArray[ i ];
+            newArray[ this.size() ] = element;
+            charArray = newArray;
+            return true;
+        }
+        
+        charArray[ this.size() ] = element;
+        numberOfElements++;
+        return true;
     }
 
     /**
