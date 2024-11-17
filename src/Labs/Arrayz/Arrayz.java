@@ -4,7 +4,7 @@ package src.Labs.Arrayz;
  * JAVADOC HERE
  *
  * @author Nate Johnson
- * @version 11/15/24
+ * @version 11/17/24
  */
 public class Arrayz
 {
@@ -149,19 +149,6 @@ public class Arrayz
         return true;
     }
 
-    private char[] update()
-    {
-        char[] updatedArray = new char[ charArray.length + INCREMENT ];
-
-        for( int i = 0; i < charArray.length; i++ )
-            updatedArray[ i ] = charArray[ i ];
-        for(int i = charArray.length; i < updatedArray.length; i++)
-            updatedArray[ i ] = ' ';
-
-        charArray = updatedArray;
-        return charArray;
-    }
-
     /**
      * JAVADOC
      *
@@ -171,7 +158,21 @@ public class Arrayz
      */
     public boolean add( int index, char element )
     {
-        return false;
+        if( charArray[ charArray.length - 1 ] != ' ' )
+        {
+            update();
+        }
+
+        for( int i = charArray.length - 1; i > index; i-- )
+        {
+            char temp = charArray[ i - 1 ];
+            charArray[ i ] = charArray[ i - 1 ];
+            charArray[ i ] = temp;
+        }
+        charArray[ index ] = element;
+        numberOfElements++;
+
+        return true;
     }
 
     /**
@@ -196,6 +197,18 @@ public class Arrayz
         return false;
     }
 
+    private void update()
+    {
+        char[] updatedArray = new char[ charArray.length + INCREMENT ];
+
+        for( int i = 0; i < charArray.length; i++ )
+            updatedArray[ i ] = charArray[ i ];
+        for(int i = charArray.length; i < updatedArray.length; i++)
+            updatedArray[ i ] = ' ';
+
+        charArray = updatedArray;
+    }
+
     /**
      * JAVADOC
      *
@@ -205,7 +218,7 @@ public class Arrayz
     {
         String str = "[" + charArray[ 0 ];
 
-        for(int i = 1; charArray[ i ] != ' '; i++)
+        for(int i = 1; i < size(); i++)
             str += ", " + charArray[ i ];
 
         str += "]";

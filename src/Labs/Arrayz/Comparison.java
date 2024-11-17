@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * JAVADOC HERE
  *
  * @author Nate Johnson
- * @version 11/15/24
+ * @version 11/17/24
  */
 public class Comparison
 {
@@ -25,13 +25,11 @@ public class Comparison
 
         arrayz.testingStarter();
         System.out.println(arrayz);
-        arrayz.clear();
 
+        arrayz.add(6, 'u');
         System.out.println(arrayz);
-
-        arrayz.add('!');
-        arrayz.add('@');
-
+        
+        arrayz.add(7, 't');
         System.out.println(arrayz);
     }
 }
