@@ -203,7 +203,23 @@ public class Arrayz
      */
     public boolean remove( char element )
     {
-        return false;
+        if( !contains( element ) )
+            return false;
+
+        int index = indexOf( element );
+
+        charArray[ index ] = ' ';
+
+        for( int i = index; i < charArray.length - 1; i++ )
+        {
+            char temp = charArray[ i ];
+            charArray[ i ] = charArray[ i + 1 ];
+            charArray[ i + 1 ] = temp;
+        }
+
+        numberOfElements--;
+
+        return true;
     }
 
     private void update()

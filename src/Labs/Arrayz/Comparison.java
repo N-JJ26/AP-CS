@@ -29,10 +29,10 @@ public class Comparison
         arrayz.add(6, 'u');
         System.out.println(arrayz);
 
-        arrayz.remove(6);
+        arrayz.remove('u');
         System.out.println(arrayz);
 
-        arrayz.remove(arrayz.size() - 1);
+        arrayz.remove('a');
         System.out.println(arrayz);
     }
 }
