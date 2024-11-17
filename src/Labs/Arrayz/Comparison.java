@@ -28,8 +28,11 @@ public class Comparison
 
         arrayz.add(6, 'u');
         System.out.println(arrayz);
-        
-        arrayz.add(7, 't');
+
+        arrayz.remove(6);
+        System.out.println(arrayz);
+
+        arrayz.remove(arrayz.size() - 1);
         System.out.println(arrayz);
     }
 }
