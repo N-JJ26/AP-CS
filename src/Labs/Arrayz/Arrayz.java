@@ -140,9 +140,7 @@ public class Arrayz
     public boolean add( char element )
     {
         if( charArray[ charArray.length - 1 ] != ' ' )
-        {
             update();
-        }
 
         charArray[ size() ] = element;
         numberOfElements++;
@@ -159,9 +157,7 @@ public class Arrayz
     public boolean add( int index, char element )
     {
         if( charArray[ charArray.length - 1 ] != ' ' )
-        {
             update();
-        }
 
         for( int i = charArray.length - 1; i > index; i-- )
         {
@@ -183,6 +179,7 @@ public class Arrayz
      */
     public char remove( int index )
     {
+        
         return '!';
     }
 
