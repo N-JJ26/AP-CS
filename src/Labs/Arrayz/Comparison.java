@@ -23,12 +23,15 @@ public class Comparison
         list = new ArrayList< Character >();
         arrayz = new Arrayz();
 
+        arrayz.testingStarter();
+        System.out.println(arrayz);
         arrayz.clear();
+
         System.out.println(arrayz);
 
-        for(int i = 0; i < 20; i++) {
-            arrayz.add( '!' );
-        }
+        arrayz.add('!');
+        arrayz.add('@');
+
         System.out.println(arrayz);
     }
 }

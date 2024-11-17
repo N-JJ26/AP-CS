@@ -139,19 +139,27 @@ public class Arrayz
      */
     public boolean add( char element )
     {
-        char[] newArray = new char[ charArray.length + INCREMENT ];
-        if( charArray[ this.size() ] != ' ' )
+        if( charArray[ charArray.length - 1 ] != ' ' )
         {
-            for( int i = 0; i < this.size(); i++ )
-                newArray[ i ] = charArray[ i ];
-            newArray[ this.size() ] = element;
-            charArray = newArray;
-            return true;
+            update();
         }
-        
-        charArray[ this.size() ] = element;
+
+        charArray[ size() ] = element;
         numberOfElements++;
         return true;
+    }
+
+    private char[] update()
+    {
+        char[] updatedArray = new char[ charArray.length + INCREMENT ];
+
+        for( int i = 0; i < charArray.length; i++ )
+            updatedArray[ i ] = charArray[ i ];
+        for(int i = charArray.length; i < updatedArray.length; i++)
+            updatedArray[ i ] = ' ';
+
+        charArray = updatedArray;
+        return charArray;
     }
 
     /**
@@ -195,7 +203,11 @@ public class Arrayz
      */
     public String toString()
     {
-        return java.util.Arrays.toString( charArray );
+        String str = "[" + charArray[ 0 ];
+        for(int i = 1; charArray[ i ] != ' '; i++)
+            str += ", " + charArray[ i ];
+        str += "]";
+        return str;
     }
 
     /**
