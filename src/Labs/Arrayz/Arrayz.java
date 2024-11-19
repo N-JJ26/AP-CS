@@ -1,7 +1,7 @@
 package src.Labs.Arrayz;
 
 /**
- * JAVADOC HERE
+ * A mere imitation of the ArrayList class; a façade
  *
  * @author Nate Johnson
  * @version 11/19/24
@@ -25,6 +25,7 @@ public class Arrayz
     {
         numberOfElements = 0;
         charArray = new char[ CAPACITY ];
+
         for( int i = 0; i < charArray.length; i++ )
             charArray[ i ] = ' ';
     }
@@ -139,8 +140,9 @@ public class Arrayz
         if( charArray[ charArray.length - 1 ] != ' ' )
             update();
 
-        charArray[ size() ] = element;
+        charArray[ numberOfElements ] = element;
         numberOfElements++;
+
         return true;
     }
 
@@ -238,7 +240,7 @@ public class Arrayz
     {
         String str = "[" + charArray[ 0 ];
 
-        for(int i = 1; i < size(); i++)
+        for(int i = 1; i < numberOfElements; i++)
             str += ", " + charArray[ i ];
 
         str += "]";
@@ -254,10 +256,10 @@ public class Arrayz
      */
     public boolean equals( Arrayz arr )
     {
-        if( arr == null || size() != arr.size() )
+        if( arr == null || numberOfElements != arr.size() )
             return false;
         
-        for( int i = 0; i < size(); i++ )
+        for( int i = 0; i < numberOfElements; i++ )
             if( charArray[ i ] != arr.get( i ) )
                 return false;
         return true;
