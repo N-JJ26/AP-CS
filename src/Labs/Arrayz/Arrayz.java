@@ -4,19 +4,16 @@ package src.Labs.Arrayz;
  * JAVADOC HERE
  *
  * @author Nate Johnson
- * @version 11/17/24
+ * @version 11/19/24
  */
 public class Arrayz
 {
     /*TODO:
-     * javadoc
      * remove package header
      */
 
-    /** JAVADOC */
+    /** The initial capacity of the Arrayz object */
     public static final int CAPACITY = 20;
-
-    private static final int INCREMENT = 5;
 
     private int numberOfElements;
     private char[] charArray;
@@ -33,9 +30,9 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Checks to see if the Arrayz object is empty or not
      *
-     * @return
+     * @return true if the object is empty, false otherwise
      */
     public boolean isEmpty()
     {
@@ -43,9 +40,9 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Returns the size of the Arrayz object
      *
-     * @return
+     * @return the size of the object
      */
     public int size()
     {
@@ -53,7 +50,7 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Clears the Arrayz object of all its elements
      */
     public void clear()
     {
@@ -64,10 +61,10 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Returns the element of the Arrayz object at a given index
      *
-     * @param index
-     * @return
+     * @param index the desired index
+     * @return the element at the given index
      */
     public char get( int index )
     {
@@ -75,11 +72,11 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Sets an element of the Arrayz object to a new element at a desired index
      *
-     * @param index
-     * @param element
-     * @return
+     * @param index the desired index
+     * @param element the new element to be swapped
+     * @return the previous element at the index
      */
     public char set( int index, char element )
     {
@@ -90,10 +87,10 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Checks to see if the Arrayz object contains a certain element
      *
-     * @param element
-     * @return
+     * @param element the desired element
+     * @return true if the object contains the element, false otherwise
      */
     public boolean contains( char element )
     {
@@ -104,10 +101,10 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Returns the first index of an element
      *
-     * @param element
-     * @return
+     * @param element the desired element
+     * @return the first index of the element
      */
     public int indexOf( char element )
     {
@@ -118,10 +115,10 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Returns the last index of an element
      *
-     * @param element
-     * @return
+     * @param element the desired element
+     * @return the last index of the element
      */
     public int lastIndexOf( char element )
     {
@@ -132,10 +129,10 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Adds an element to the end of the Arrayz object
      *
-     * @param element
-     * @return
+     * @param element the desired element to be added
+     * @return true
      */
     public boolean add( char element )
     {
@@ -148,13 +145,12 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Adds an element to the Arrayz object at a specific index
      *
-     * @param index
-     * @param element
-     * @return
+     * @param index the desired index
+     * @param element the desired element to be added
      */
-    public boolean add( int index, char element )
+    public void add( int index, char element )
     {
         if( charArray[ charArray.length - 1 ] != ' ' )
             update();
@@ -167,15 +163,13 @@ public class Arrayz
         }
         charArray[ index ] = element;
         numberOfElements++;
-
-        return true;
     }
 
     /**
-     * JAVADOC
+     * Removes the element at a specific index
      *
-     * @param index
-     * @return
+     * @param index the desired index
+     * @return the element that was removed
      */
     public char remove( int index )
     {
@@ -196,10 +190,10 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Removes the first index of an element
      *
-     * @param element
-     * @return
+     * @param element the desired element to be removed
+     * @return true
      */
     public boolean remove( char element )
     {
@@ -224,7 +218,7 @@ public class Arrayz
 
     private void update()
     {
-        char[] updatedArray = new char[ charArray.length + INCREMENT ];
+        char[] updatedArray = new char[ charArray.length + 2 ];
 
         for( int i = 0; i < charArray.length; i++ )
             updatedArray[ i ] = charArray[ i ];
@@ -235,9 +229,10 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Returns the String representation of an Arrayz object
+     *  i.e.  ['1', '2', '3', ...]
      *
-     * @return JAVADOC
+     * @return the String representation of the object
      */
     public String toString()
     {
@@ -251,14 +246,21 @@ public class Arrayz
     }
 
     /**
-     * JAVADOC
+     * Checks if another Arrayz object has the same number and value of elements
+     *  as the Arrayz object
      *
-     * @param arr
-     * @return
+     * @param arr the Arrayz object to be compared
+     * @return true if they have the same number and value of elements, false otherwise
      */
     public boolean equals( Arrayz arr )
     {
-        return false;
+        if( arr == null || size() != arr.size() )
+            return false;
+        
+        for( int i = 0; i < size(); i++ )
+            if( charArray[ i ] != arr.get( i ) )
+                return false;
+        return true;
     }
 
     /**
