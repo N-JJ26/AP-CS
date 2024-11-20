@@ -4,7 +4,7 @@ package src.Labs.Arrayz;
  * A mere imitation of the ArrayList class; a façade
  *
  * @author Nate Johnson
- * @version 11/19/24
+ * @version 11/20/24
  */
 public class Arrayz
 {
