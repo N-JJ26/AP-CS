@@ -11,10 +11,6 @@ import java.util.ArrayList;
  */
 public class Comparison
 {
-    /*TODO:
-     * javadoc
-     * remove package header and main() parameters
-     */
     private static ArrayList< Character > list;
     private static Arrayz arrayz;
     private static Scanner in = new Scanner( System.in );
@@ -22,7 +18,7 @@ public class Comparison
     /**
      * The main entry point of the lab
      */
-    public static void main(String[] args)
+    public static void main()
     {
         list = new ArrayList< Character >();
         arrayz = new Arrayz();
@@ -43,16 +39,16 @@ public class Comparison
             switch( in.nextLine().toUpperCase().charAt( 0 ) )
             {
                 case 'P':
-                    System.out.println( "list = " + list.toString() );
-                    System.out.println( "arrayz = " + arrayz.toString() );
+                    System.out.println( "list == " + list.toString() );
+                    System.out.println( "arrayz == " + arrayz.toString() );
                     break;
                 case 'S':
-                    System.out.println( "size = " + list.size());
-                    System.out.println( "size = " + arrayz.size());
+                    System.out.println( "size == " + list.size());
+                    System.out.println( "size == " + arrayz.size());
                     break;
                 case 'Y':
-                    System.out.println( "is empty? = " + list.isEmpty());
-                    System.out.println( "is empty? = " + arrayz.isEmpty());
+                    System.out.println( "is empty? == " + list.isEmpty());
+                    System.out.println( "is empty? == " + arrayz.isEmpty());
                     break;
                 case 'R':
                     list.clear();
@@ -63,67 +59,84 @@ public class Comparison
                     System.out.print( "Enter index: " );
                     index = in.nextInt();
                     in.nextLine();
-                    System.out.println( "list.get( " + index + " ) = " + list.get( index ) );
-                    System.out.println( "arrayz.get( " + index + " ) = " + arrayz.get( index ) );
+                    while( in.nextInt() < 0 && in.nextInt() >= arrayz.size() &&
+                            in.nextInt() >= list.size() )
+                    {
+                        index = in.nextInt();
+                        in.nextLine();
+                    }
+                    System.out.println( "list.get( " + index + " ) == " + list.get( index ) );
+                    System.out.println( "arrayz.get( " + index + " ) == " + arrayz.get( index ) );
                     break;
                 case 'T':
                     System.out.print( "Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
-
+                    while( in.nextInt() < 0 && in.nextInt() >= arrayz.size() &&
+                            in.nextInt() >= list.size() )
+                    {
+                        index = in.nextInt();
+                        in.nextLine();
+                    }
                     System.out.print( "Enter element: ");
                     element = in.nextLine().charAt( 0 );
 
-                    System.out.println( "list.set( " + index + ", " + element + " ) = " +
+                    System.out.println( "list.set( " + index + ", " + element + " ) == " +
                                         list.set( index,element ) );
 
-                    System.out.println( "arrayz.set( " + index + ", " + element + " ) = " +
+                    System.out.println( "arrayz.set( " + index + ", " + element + " ) == " +
                                         arrayz.set( index,element ) );
                     break;
                 case 'C':
                     System.out.print( "Enter element: ");
                     element = in.nextLine().charAt( 0 );
 
-                    System.out.println( "list.contains( " + element + " ) = " +
+                    System.out.println( "list.contains( " + element + " ) == " +
                                         list.contains( element ) );
 
-                    System.out.println( "arrayz.contains( " + element + " ) = " +
+                    System.out.println( "arrayz.contains( " + element + " ) == " +
                                         arrayz.contains( element ) );
                     break;
                 case 'N':
                     System.out.print( "Enter element: ");
                     element = in.nextLine().charAt( 0 );
 
-                    System.out.println( "list.indexOf( " + element + " ) = " +
+                    System.out.println( "list.indexOf( " + element + " ) == " +
                                         list.indexOf( element ) );
 
-                    System.out.println( "arrayz.indexOf( " + element + " ) = " +
+                    System.out.println( "arrayz.indexOf( " + element + " ) == " +
                                         arrayz.indexOf( element ) );
                     break;
                 case 'L':
                     System.out.print( "Enter element: ");
                     element = in.nextLine().charAt( 0 );
 
-                    System.out.println( "list.lastIndexOf( " + element + " ) = " +
+                    System.out.println( "list.lastIndexOf( " + element + " ) == " +
                                         list.lastIndexOf( element ) );
 
-                    System.out.println( "arrayz.lastIndexOf( " + element + " ) = " +
+                    System.out.println( "arrayz.lastIndexOf( " + element + " ) == " +
                                         arrayz.lastIndexOf( element ) );
                     break;
                 case 'A':
                     System.out.print("Enter element: ");
                     element = in.nextLine().charAt( 0 );
 
-                    System.out.println( "list.add( " + element + " ) = " +
+                    System.out.println( "list.add( " + element + " ) == " +
                                         list.add( element ) );
                     
-                    System.out.println( "arrayz.add( " + element + " ) = " +
+                    System.out.println( "arrayz.add( " + element + " ) == " +
                                         arrayz.add( element ) );
                     break;
                 case 'I':
                     System.out.print("Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
+                    while( in.nextInt() < 0 && in.nextInt() >= arrayz.size() &&
+                            in.nextInt() >= list.size() )
+                    {
+                        index = in.nextInt();
+                        in.nextLine();
+                    }
 
                     System.out.print("Enter element: ");
                     element = in.nextLine().charAt( 0 );
@@ -138,21 +151,27 @@ public class Comparison
                     System.out.print("Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
-    
-                    System.out.println("list.remove( " + index + " ) = " +
+                    while( in.nextInt() < 0 && in.nextInt() >= arrayz.size() &&
+                            in.nextInt() >= list.size() )
+                    {
+                        index = in.nextInt();
+                        in.nextLine();
+                    }
+
+                    System.out.println("list.remove( " + index + " ) == " +
                                         list.remove( index ) );
 
-                    System.out.println("arrayz.remove( " + index + " ) = " +
+                    System.out.println("arrayz.remove( " + index + " ) == " +
                                         arrayz.remove( index ) );
                     break;
                 case 'E':
                     System.out.print("Enter element: ");
                     element = in.nextLine().charAt( 0 );
 
-                    System.out.println( "list.remove( " + element + " ) = " +
+                    System.out.println( "list.remove( " + element + " ) == " +
                                         list.remove( ( Character )element ) );
 
-                    System.out.println( "arrayz.remove( " + element + " ) = " +
+                    System.out.println( "arrayz.remove( " + element + " ) == " +
                                         arrayz.remove( element ) );
                     break;
                 case 'X':

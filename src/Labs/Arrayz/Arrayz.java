@@ -8,10 +8,6 @@ package src.Labs.Arrayz;
  */
 public class Arrayz
 {
-    /*TODO:
-     * remove package header
-     */
-
     /** The initial capacity of the Arrayz object */
     public static final int CAPACITY = 20;
 
@@ -55,8 +51,6 @@ public class Arrayz
      */
     public void clear()
     {
-        charArray = new char[ CAPACITY ];
-
         for( int i = 0; i < charArray.length; i++ )
             charArray[ i ] = ' ';
     }
