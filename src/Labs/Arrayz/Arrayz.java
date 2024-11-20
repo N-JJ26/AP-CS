@@ -224,7 +224,7 @@ public class Arrayz
 
         for( int i = 0; i < charArray.length; i++ )
             updatedArray[ i ] = charArray[ i ];
-        for(int i = charArray.length; i < updatedArray.length; i++)
+        for( int i = charArray.length; i < updatedArray.length; i++ )
             updatedArray[ i ] = ' ';
 
         charArray = updatedArray;
@@ -240,7 +240,7 @@ public class Arrayz
     {
         String str = "[" + charArray[ 0 ];
 
-        for(int i = 1; i < numberOfElements; i++)
+        for( int i = 1; i < numberOfElements; i++ )
             str += ", " + charArray[ i ];
 
         str += "]";
