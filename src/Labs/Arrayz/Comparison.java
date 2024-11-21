@@ -65,7 +65,7 @@ public class Comparison
                     System.out.print( "Enter index: " );
                     index = in.nextInt();
                     in.nextLine();
-                    while( index < 0 || index >= arrayz.size() || index >= list.size() )
+                    while( index < 0 || index >= arrayz.size() )
                     {
                         System.out.print( "INDEX OUT OF BOUNDS\nEnter index: " );
                         index = in.nextInt();
@@ -83,7 +83,7 @@ public class Comparison
                     System.out.print( "Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
-                    while( index < 0 || index >= arrayz.size() || index >= list.size() )
+                    while( index < 0 || index >= arrayz.size() )
                     {
                         System.out.print( "INDEX OUT OF BOUNDS\nEnter index: " );
                         index = in.nextInt();
@@ -142,7 +142,7 @@ public class Comparison
                     System.out.print("Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
-                    while( index < 0 || index > arrayz.size() || index > list.size() )
+                    while( index < 0 || index >= arrayz.size() )
                     {
                         System.out.print( "INDEX OUT OF BOUNDS\nEnter index: " );
                         index = in.nextInt();
@@ -167,7 +167,7 @@ public class Comparison
                     System.out.print("Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
-                    while( index < 0 || index >= arrayz.size() || index >= list.size() )
+                    while( index < 0 || index >= arrayz.size() )
                     {
                         System.out.print( "INDEX OUT OF BOUNDS\nEnter index: " );
                         index = in.nextInt();
