@@ -4,10 +4,11 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
- * The Arrayz lab, where the Arrayz object is compared to an ArrayList object
+ * The Arrayz lab, where the Arrayz object's methods
+ *  are compared to an ArrayList object's methods
  *
  * @author Nate Johnson
- * @version 11/19/24
+ * @version 11/21/24
  */
 public class Comparison
 {
@@ -43,12 +44,12 @@ public class Comparison
                     System.out.println( "arrayz == " + arrayz.toString() );
                     break;
                 case 'S':
-                    System.out.println( "size == " + list.size());
-                    System.out.println( "size == " + arrayz.size());
+                    System.out.println( "list.size() == " + list.size());
+                    System.out.println( "arrayz.size() == " + arrayz.size());
                     break;
                 case 'Y':
-                    System.out.println( "is empty? == " + list.isEmpty());
-                    System.out.println( "is empty? == " + arrayz.isEmpty());
+                    System.out.println( "list.isEmpty() == " + list.isEmpty());
+                    System.out.println( "arrayz.isEmpty() == " + arrayz.isEmpty());
                     break;
                 case 'R':
                     list.clear();
@@ -56,12 +57,17 @@ public class Comparison
                     System.out.println( "cleared" );
                     break;
                 case 'G':
+                    if( list.isEmpty() )
+                    {
+                        System.out.println( "Empty list" );
+                        break;
+                    }
                     System.out.print( "Enter index: " );
                     index = in.nextInt();
                     in.nextLine();
-                    while( in.nextInt() < 0 && in.nextInt() >= arrayz.size() &&
-                            in.nextInt() >= list.size() )
+                    while( index < 0 || index >= arrayz.size() || index >= list.size() )
                     {
+                        System.out.print( "INDEX OUT OF BOUNDS\nEnter index: " );
                         index = in.nextInt();
                         in.nextLine();
                     }
@@ -69,12 +75,17 @@ public class Comparison
                     System.out.println( "arrayz.get( " + index + " ) == " + arrayz.get( index ) );
                     break;
                 case 'T':
+                    if( list.isEmpty() )
+                    {
+                        System.out.println( "Empty list" );
+                        break;
+                    }
                     System.out.print( "Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
-                    while( in.nextInt() < 0 && in.nextInt() >= arrayz.size() &&
-                            in.nextInt() >= list.size() )
+                    while( index < 0 || index >= arrayz.size() || index >= list.size() )
                     {
+                        System.out.print( "INDEX OUT OF BOUNDS\nEnter index: " );
                         index = in.nextInt();
                         in.nextLine();
                     }
@@ -131,9 +142,9 @@ public class Comparison
                     System.out.print("Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
-                    while( in.nextInt() < 0 && in.nextInt() >= arrayz.size() &&
-                            in.nextInt() >= list.size() )
+                    while( index < 0 || index > arrayz.size() || index > list.size() )
                     {
+                        System.out.print( "INDEX OUT OF BOUNDS\nEnter index: " );
                         index = in.nextInt();
                         in.nextLine();
                     }
@@ -148,12 +159,17 @@ public class Comparison
                     arrayz.add( index, element);
                     break;
                 case 'M':
+                    if( list.isEmpty() )
+                    {
+                        System.out.println( "Empty list" );
+                        break;
+                    }
                     System.out.print("Enter index: ");
                     index = in.nextInt();
                     in.nextLine();
-                    while( in.nextInt() < 0 && in.nextInt() >= arrayz.size() &&
-                            in.nextInt() >= list.size() )
+                    while( index < 0 || index >= arrayz.size() || index >= list.size() )
                     {
+                        System.out.print( "INDEX OUT OF BOUNDS\nEnter index: " );
                         index = in.nextInt();
                         in.nextLine();
                     }

@@ -4,7 +4,7 @@ package src.Labs.Arrayz;
  * A mere imitation of the ArrayList class; a façade
  *
  * @author Nate Johnson
- * @version 11/20/24
+ * @version 11/21/24
  */
 public class Arrayz
 {
@@ -53,6 +53,7 @@ public class Arrayz
     {
         for( int i = 0; i < charArray.length; i++ )
             charArray[ i ] = ' ';
+        numberOfElements = 0;
     }
 
     /**
