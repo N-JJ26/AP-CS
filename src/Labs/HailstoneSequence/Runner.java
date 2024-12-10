@@ -1,5 +1,7 @@
 package src.Labs.HailstoneSequence;
 
+import java.util.ArrayList;
+
 /**
  * JAVADOC
  *
@@ -11,16 +13,16 @@ public class Runner {
     private static final int TOP_FIVE = 5;
 
     private static Sequence sequence;
-    private static Sequence[] sequences = new Sequence[NUM_SEQUENCES];
+    private static ArrayList<Sequence> sequences = new ArrayList<Sequence>();
 
     private static int largestStone, longestSequence = 0;
 
     private static int[] seeds = new int[TOP_FIVE];
 
     public static void main(String[] args) {
-        for(int i = 1; i <= NUM_SEQUENCES; i++) {
+        for(int i = 1; i < NUM_SEQUENCES - 1; i++) {
             sequence = new Sequence(i);
-            sequences[i - 1] = sequence;
+            sequences.add(sequence);
 
             for(Sequence sequence : sequences) {
                 sequence = new Sequence(i);
