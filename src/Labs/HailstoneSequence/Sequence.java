@@ -3,10 +3,11 @@ package src.Labs.HailstoneSequence;
 import java.util.ArrayList;
 
 /**
- * JAVADOC
+ * The Hailstone sequence: recursively, check a number,
+ *  if it is odd, multiply it by three and add 1, otherwise, divide by 2
  *
  * @author Nate Johnson
- * @version 12/10/24
+ * @version 12/16/24
  */
 public class Sequence {
     private ArrayList<Integer> stones;
