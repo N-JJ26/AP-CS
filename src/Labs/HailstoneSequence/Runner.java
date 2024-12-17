@@ -12,8 +12,6 @@ public class Runner {
     private static final int NUM_SEQUENCES_NORMAL = 1000;
     private static final int NUM_SEQUENCES_EXTENSION = 100000;
 
-    private static int longestCount, largestCount, tempCount = 0;
-
     private static Sequence[] sequences;
 
     public static void main() {
