@@ -107,6 +107,10 @@ public class Point {
         return distance(new Point(), this); //(this) is the only necessary this (as a parameter)
     }
 
+    public String toString() {
+        return "(" + (int)x + ", " + (int)y + ")";
+    }
+
     /**
      * Calculates the distance between 2 Points
      *
