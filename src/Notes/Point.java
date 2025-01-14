@@ -4,7 +4,7 @@ package src.Notes;
  * Cartesian points
  *
  * @author Nate Johnson
- * @version 1/10/24
+ * @version 1/14/25
  */
 public class Point {
     //this.var refers to the implicit parameter's instance variables
@@ -107,8 +107,36 @@ public class Point {
         return distance(new Point(), this); //(this) is the only necessary this (as a parameter)
     }
 
+    /**
+     * Returns the point as an ordered pair: (x, y)
+     *
+     * @return the ordered pair: (x, y) to 2 decimal places
+     */
     public String toString() {
-        return "(" + (int)x + ", " + (int)y + ")";
+        final double EPSILON = 0.001;
+
+        String xStr = "";
+        String yStr = "";
+
+        if(Math.abs((int)(x) - x) < EPSILON)
+            xStr = "" + (int)(x);
+        else {
+            if((int)(x * 100) % 10 != 0)
+                xStr = "" + (int)(x) + "." + (int)((x * 100) % 100);
+            else
+                xStr = "" + (int)(x) + "." + (int)((x * 10) % 10);
+        }
+
+        if(Math.abs((int)(y) - y) < EPSILON)
+            yStr = "" + (int)(y);
+        else {
+            if((int)(y * 100) % 10 != 0)
+                yStr = "" + (int)(y) + "." + (int)((y * 100) % 100);
+            else
+                yStr = "" + (int)(y) + "." + (int)((y * 10) % 10);
+        }
+
+        return "(" + xStr + ", " + yStr + ")";
     }
 
     /**
@@ -129,7 +157,21 @@ public class Point {
      * @param p2 the second Point
      * @return the slope of the two points as a decimal
      */
-    public double slope(Point p1, Point p2) {
+    public static double slope(Point p1, Point p2) {
         return (p1.getY() - p2.getY()) / (p1.getX() - p2.getX());
+    }
+
+    public static void main(String[] args) {
+        Point[] points = new Point[]{new Point(6.781, 3.425),
+                                    new Point(15.40, 8.20),
+                                    new Point(6, 1),
+                                    new Point(6.00, 1.00),
+                                    new Point(10000.5, 123251241.5),
+                                    new Point(),
+                                    new Point(3.00000000001, 2.3)};
+
+        for(Point point : points) {
+            System.out.println(point);
+        }
     }
 }
