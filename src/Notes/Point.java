@@ -108,6 +108,15 @@ public class Point {
     }
 
     /**
+     *
+     * @param other
+     * @return
+     */
+    public boolean equals(Point other) {
+        return false;
+    }
+
+    /**
      * Returns the point as an ordered pair: (x, y)
      *
      * @return the ordered pair: (x, y) to 2 decimal places
@@ -159,6 +168,39 @@ public class Point {
      */
     public static double slope(Point p1, Point p2) {
         return (p1.getY() - p2.getY()) / (p1.getX() - p2.getX());
+    }
+
+    /**
+     * 
+     *
+     * @param points
+     * @return
+     */
+    public static int[] getXs(Point[] points) {
+        if(points == null)
+            return new int[]{};
+        
+        int[] xs = new int[points.length];
+        for(int i = 0; i < xs.length; i++) {
+            xs[i] = (int)(points[i].getX());
+        }
+        return xs;
+    }
+
+    /**
+     *
+     * @param points
+     * @return
+     */
+    public static int[] getYs(Point[] points) {
+        if(points == null)
+            return new int[]{};
+        
+        int[] ys = new int[points.length];
+        for(int i = 0; i < ys.length; i++) {
+            ys[i] = (int)(points[i].getY());
+        }
+        return ys;
     }
 
     public static void main(String[] args) {
