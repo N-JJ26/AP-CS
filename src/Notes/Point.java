@@ -108,12 +108,16 @@ public class Point {
     }
 
     /**
+     * Compares this Point object to another Point object
      *
-     * @param other
-     * @return
+     * @param other the Point that is being compared against
+     * @return true if the implicit x and y are equal to the explicit x and y,
+     *          false otherwise
      */
     public boolean equals(Point other) {
-        return false;
+        final double EPSILON = 0.001;
+
+        return (Math.abs(x - other.getX()) < EPSILON) && (Math.abs(x - other.getY()) < EPSILON);
     }
 
     /**
@@ -171,10 +175,10 @@ public class Point {
     }
 
     /**
-     * 
+     * Returns the int array of all the x coordinates of the points
      *
-     * @param points
-     * @return
+     * @param points the array of Point objects
+     * @return the int array of all the x coordinates in points
      */
     public static int[] getXs(Point[] points) {
         if(points == null)
@@ -188,9 +192,10 @@ public class Point {
     }
 
     /**
+     * Returns the int array of all the y coordinates of the points
      *
-     * @param points
-     * @return
+     * @param points the array of Point objects
+     * @return the int array of all the y coordinates in points
      */
     public static int[] getYs(Point[] points) {
         if(points == null)
