@@ -125,6 +125,19 @@ public class Point {
     }
 
     /**
+     * Overridden .equals() of Object
+     *
+     * @param obj is any Object as a parameter
+     * @return true of the explicit parameter is a Point object and matches coordinates
+     */
+    public boolean equals(Object obj) {
+        if(obj == null || !(obj instanceof Point)) { //instanceof is an operator
+            return false;
+        }
+        return this.equals((Point)obj); //obj is AT LEAST a Point object
+    }
+
+    /**
      * Returns the point as an ordered pair: (x, y)
      *
      * @return the ordered pair: (x, y) to 2 decimal places
