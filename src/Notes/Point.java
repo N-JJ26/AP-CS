@@ -197,7 +197,9 @@ public class Point {
 
     /**
      * Returns the int array of all the y coordinates of the points
-        final double EPSILON = 0.001;
+     *
+     * @param points the array of Point objects
+     * @return the int array of all the y coordinates in points
      */
     public static int[] getYs(Point[] points) {
         if(points == null)
