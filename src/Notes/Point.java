@@ -115,10 +115,13 @@ public class Point {
      *          false otherwise
      */
     public boolean equals(Point other) {
+        if (other == null)
+            return false;
+
         final double EPSILON = 0.001;
 
-        return (Math.abs(x - other.getX()) < EPSILON) &&
-                (Math.abs(y - other.getY()) < EPSILON);
+        return (Math.abs(x - other.x) < EPSILON) &&
+                (Math.abs(y - other.y) < EPSILON);
     }
 
     /**
