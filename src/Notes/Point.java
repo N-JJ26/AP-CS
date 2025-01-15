@@ -117,7 +117,8 @@ public class Point {
     public boolean equals(Point other) {
         final double EPSILON = 0.001;
 
-        return (Math.abs(x - other.getX()) < EPSILON) && (Math.abs(x - other.getY()) < EPSILON);
+        return (Math.abs(x - other.getX()) < EPSILON) &&
+                (Math.abs(y - other.getY()) < EPSILON);
     }
 
     /**
@@ -193,9 +194,7 @@ public class Point {
 
     /**
      * Returns the int array of all the y coordinates of the points
-     *
-     * @param points the array of Point objects
-     * @return the int array of all the y coordinates in points
+        final double EPSILON = 0.001;
      */
     public static int[] getYs(Point[] points) {
         if(points == null)
@@ -220,5 +219,20 @@ public class Point {
         for(Point point : points) {
             System.out.println(point);
         }
+
+        System.out.println(points[2].equals(points[3]));
+        System.out.println(points[1].equals(points[2]));
+
+        for(int x : getXs(points)) {
+            System.out.print(x + " ");
+        }
+
+        System.out.println();
+
+        for(int y : getYs(points)) {
+            System.out.print(y + " ");
+        }
+
+        System.out.println();
     }
 }
