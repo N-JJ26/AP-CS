@@ -4,7 +4,7 @@ package src.Notes;
  * Cartesian points
  *
  * @author Nate Johnson
- * @version 1/14/25
+ * @version 1/15/25
  */
 public class Point {
     //this.var refers to the implicit parameter's instance variables
