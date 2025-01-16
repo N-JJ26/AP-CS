@@ -1,4 +1,4 @@
-package src.Notes;
+package src.Notes.Inheritance;
 
 /**
  * Lattice point has only int x's and y's

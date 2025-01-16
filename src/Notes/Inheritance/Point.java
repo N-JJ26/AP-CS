@@ -1,4 +1,4 @@
-package src.Notes;
+package src.Notes.Inheritance;
 
 /**
  * Cartesian points
