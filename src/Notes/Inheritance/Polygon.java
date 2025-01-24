@@ -24,7 +24,7 @@ public class Polygon {
      *
      * @return the Point[]
      */
-    public Point[] gePoints() {
+    public Point[] getPoints() {
         Point[] copy = new Point[points.length];
         for(int i = 0; i < points.length; i++)
             copy[i] = points[i];
@@ -57,7 +57,7 @@ public class Polygon {
         if (polygon == null)
             return 0.0;
 
-        Point[] pts = polygon.gePoints();
+        Point[] pts = polygon.getPoints();
         double[] xs = new double[pts.length + 1];
         double[] ys = new double[pts.length + 1];
 
