@@ -4,7 +4,7 @@ package src.Notes.Inheritance;
  * Another class used to demonstrate super() and super.
  *
  * @author Nate Johnson
- * @version 1/16/25
+ * @version 1/28/25
  */
 public class Quadrilateral extends Polygon {
     /**
@@ -27,5 +27,9 @@ public class Quadrilateral extends Polygon {
      */
     public Quadrilateral(Point a, Point b, Point c, Point d) {
         this(new Point[]{a, b, c, d}); //stylistically, only one super() call
+    }
+
+    public boolean isConvex() {
+        return false;
     }
 }
