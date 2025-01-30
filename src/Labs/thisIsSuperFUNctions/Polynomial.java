@@ -1,6 +1,6 @@
 package src.Labs.thisIsSuperFUNctions;
 
-public class Polynomial
+public class Polynomial extends Function
 {
     private double[] a;
 

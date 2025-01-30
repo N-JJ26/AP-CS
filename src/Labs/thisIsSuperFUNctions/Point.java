@@ -4,28 +4,21 @@ package src.Labs.thisIsSuperFUNctions;
  * Cartesian points
  *
  * @author Nate Johnson
- * @version 1/15/25
+ * @version 1/30/25
  */
-public class Point {
-    //this.var refers to the implicit parameter's instance variables
-    private double x; //this.x
-    private double y; //this.y
-
-    //this. can always be avoided
-    //strictly for readability
-
-    /*
-     * Overshadowing:
-     *  using variables with the same name without this. will  make things really funny
-     */
-
+public class Point
+{
+    private double x;
+    private double y;
+    
     /**
      * Constructor for a Point object
      *
      * @param x the x coordinate
      * @param y the y coordinate
      */
-    public Point(double x, double y) {
+    public Point( double x, double y )
+    {
         this.x = x;
         this.y = y;
     }
@@ -34,16 +27,9 @@ public class Point {
      * Default Constructor to generate origin
      *  (overloading the constructor; same name, different parameters)
      */
-    public Point() {
-        this(0.0, 0.0); //calls the appropriate constructor in one line
-                            //to avoid a Point() inside of a Point(), this() avoids that
-
-        // this.x = 0.0;
-        // this.y = 0.0;
-
-        // x = 0.0;
-        // y = 0.0;
-        //these do the exact same thing
+    public Point()
+    {
+        this( 0.0, 0.0 );
     }
 
     /**
@@ -52,8 +38,9 @@ public class Point {
      * @param x x coordinate
      * @param y y coordinate
      */
-    public Point(int x, int y) {
-        this((double)x, (double)y);
+    public Point( int x, int y )
+    {
+        this( ( double )x, ( double )y );
     }
 
     /**
@@ -61,14 +48,20 @@ public class Point {
      *
      * @return x the x coordinate
      */
-    public double getX() { return x; }
+    public double getX()
+    {
+        return x;
+    }
 
     /**
      * Returns the y coordinate
      *
      * @return y the y coordinate
      */
-    public double getY() { return y; }
+    public double getY()
+    {
+        return y;
+    }
 
     /**
      * Moves the Point object according to a deltaX and deltaY
@@ -78,7 +71,8 @@ public class Point {
      * @param deltaY the change in the y coordinate, deltaY > 0 moves up
      *               deltaY < 0 moves down, and deltaY == 0 does nothing
      */
-    public void translate(double deltaX, double deltaY) {
+    public void translate( double deltaX, double deltaY )
+    {
         x += deltaX;
         y += deltaY;
     }
@@ -91,11 +85,9 @@ public class Point {
      * @param deltaY the change in the y coordinate, deltaY > 0 moves up
      *               deltaY < 0 moves down, and deltaY == 0 does nothing
      */
-    public void translate(int deltaX, int deltaY) {
-        this.translate((double)deltaX, (double)deltaY); //this. can be used for methods as well
-
-        //this. is not necessary...EVER! (suuuuure) you NEVER (suuuuure) need this.method()
-        //this is in reference to itself, but its own methods are the "most local"
+    public void translate( int deltaX, int deltaY )
+    {
+        this.translate( ( double )deltaX, ( double )deltaY );
     }
 
     /**
@@ -104,7 +96,7 @@ public class Point {
      * @return the distance from the origin
      */
     public double absoluteValue() {
-        return distance(new Point(), this); //(this) is the only necessary this (as a parameter)
+        return distance( new Point(), this );
     }
 
     /**
@@ -114,14 +106,15 @@ public class Point {
      * @return true if the implicit x and y are equal to the explicit x and y,
      *          false otherwise
      */
-    public boolean equals(Point other) {
-        if (other == null)
+    public boolean equals( Point other )
+    {
+        if ( other == null )
             return false;
 
         final double EPSILON = 0.001;
 
-        return (Math.abs(x - other.x) < EPSILON) &&
-                (Math.abs(y - other.y) < EPSILON);
+        return ( Math.abs( x - other.x ) < EPSILON ) &&
+                ( Math.abs( y - other.y ) < EPSILON );
     }
 
     /**
@@ -130,11 +123,13 @@ public class Point {
      * @param obj is any Object as a parameter
      * @return true of the explicit parameter is a Point object and matches coordinates
      */
-    public boolean equals(Object obj) {
-        if(obj == null || !(obj instanceof Point)) { //instanceof is an operator
+    public boolean equals( Object obj )
+    {
+        if( obj == null || !( obj instanceof Point ) )
+        {
             return false;
         }
-        return this.equals((Point)obj); //obj is AT LEAST a Point object
+        return this.equals( ( Point )obj );
     }
 
     /**
@@ -142,7 +137,8 @@ public class Point {
      *
      * @return the ordered pair: (x, y) to 2 decimal places
      */
-    public String toString() {
+    public String toString()
+    {
         final double EPSILON = 0.001;
 
         String xStr = "";

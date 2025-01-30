@@ -2,7 +2,7 @@ package src.Labs.thisIsSuperFUNctions;
 
 public class Linear extends Polynomial
 {
-    public Linear( int m, int b )
+    public Linear( double m, double b )
     {
         super( new double[]{ m, b } );
     }
@@ -10,5 +10,10 @@ public class Linear extends Polynomial
     public Linear()
     {
         this( 1, 0 );
+    }
+
+    public double slope()
+    {
+        return 0.0;
     }
 }
