@@ -14,6 +14,8 @@ public class Linear extends Polynomial
 
     public double slope()
     {
-        return 0.0;
+        return this.leadingCoefficient();
     }
+
+    
 }

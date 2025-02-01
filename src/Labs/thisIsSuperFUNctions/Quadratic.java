@@ -17,8 +17,8 @@ public class Quadratic extends Polynomial
         return null;
     }
 
-//     public Point[] xIntercepts( boolean allowComplex )
-//     {
-//         return null;
-//     }
+    public Point[] xIntercepts( boolean allowComplex )
+    {
+        return null;
+    }
 }

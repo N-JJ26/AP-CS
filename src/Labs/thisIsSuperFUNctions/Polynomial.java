@@ -11,36 +11,63 @@ public class Polynomial extends Function
 
     public int compareTo( Polynomial other, double a, double b )
     {
-        return 0;
+        if( other == null || a > b )
+            return 1;
+
+        if( Calc.areaUnder( this, a, b ) / ( b - a )
+            > Calc.areaUnder( other, a, b ) / ( b - a ))
+            return 1;
+        if( Calc.areaUnder( this, a, b ) / ( b - a )
+            < Calc.areaUnder( other, a, b ) / ( b - a ))
+            return -1;
+        else
+            return 0;
     }
 
     public int compareTo( Polynomial other, Interval interval )
     {
-        return 0;
+        if ( other == null || interval == null
+            || interval.getLeftBound() > interval.getRightBound() )
+            return 1;
+
+        double intervalLength = interval.getRightBound() - interval.getLeftBound();
+
+        if( Calc.areaUnder( this, interval ) / intervalLength
+            > Calc.areaUnder( other, interval ) / intervalLength )
+            return 1;
+        if( Calc.areaUnder( this, interval ) / intervalLength
+            < Calc.areaUnder( other, interval ) / intervalLength )
+            return -1;
+        else
+            return 0;
     }
 
     //public Interval[] decreasing
 
     //public Interval[] increasing
 
-    public double fOf()
+    public double fOf( double x )
     {
-        return 0.0;
+        double sum = 0;
+        for( int i = 0; i < a.length; i++ ) {
+            sum += a[ i ] * Math.pow( x, ( double )i );
+        }
+        return sum;
     }
 
-    public double fPrimeOf()
+    public double fPrimeOf( double a )
     {
-        return 0.0;
+        return Calc.derivative( this ).fOf( a );
     }
 
-    public PointSlope tangent()
+    public PointSlope tangent( double x )
     {
-        return null;
+        return new PointSlope( new Point( x, fOf( x ) ), fPrimeOf( x ) );
     }
 
-    public double[] xIntercepts()
+    public Point[] xIntercepts()
     {
-        return null;
+        return Calc.xIntercepts( this );
     }
 
     public double yIntercept()
@@ -63,12 +90,12 @@ public class Polynomial extends Function
         return a;
     }
 
-    public boolean isOnCurve()
+    public boolean isOnCurve( Point p )
     {
-        return false;
+        return Math.abs( fOf( p.getX() ) - p.getY() ) < Calc.EPSILON;
     }
 
-    public boolean equals()
+    public boolean equals( Polynomial other )
     {
         return false;
     }
