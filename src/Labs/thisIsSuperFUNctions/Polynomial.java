@@ -6,7 +6,8 @@ public class Polynomial extends Function
 
     public Polynomial( double[] coefficients )
     {
-        this.a = coefficients;
+        super(); //unnecessary
+        a = coefficients;
     }
 
     public int compareTo( Polynomial other, double a, double b )
@@ -87,6 +88,9 @@ public class Polynomial extends Function
 
     public double[] coefficients()
     {
+        double[] copy = new double[ a.length ];
+        for( int i = 0; i < copy.length; i++ )
+            copy[ i ] = a[ i ];
         return a;
     }
 
@@ -97,21 +101,69 @@ public class Polynomial extends Function
 
     public boolean equals( Polynomial other )
     {
-        return false;
+        if( other.coefficients().length != a.length || other == null )
+            return false;
+        for(int i = 0; i < a.length; i++)
+            if( Math.abs( a[ i ] - other.coefficients()[ i ] ) > Calc.EPSILON )
+                return false;
+        return true;
     }
 
     public String toString()
     {
-        return "!";
+        String str = "y = ";
+        for( int i = a.length - 1; i >= 0; i-- ) {
+            String num = "" + a[i];
+            str += ( num.charAt( 0 ) == 'y' ? "" : "+" ) +
+                        a[ i ] + "x^" + i;
+        }
+        return str;
+        //TODO: make work
     }
 
     public static Polynomial add( Polynomial a, Polynomial b )
     {
-        return null;
+        return arithmetic(a, b, true);
     }
 
     public static Polynomial subtract( Polynomial a, Polynomial b )
     {
-        return null;
+        return arithmetic(a, b, false);
+    }
+
+    private static Polynomial arithmetic( Polynomial a, Polynomial b, boolean add )
+    {
+        if( a == null || b == null )
+            return new Polynomial( new double[]{ 0 } );
+
+        int longer = 0;
+        int shorter = 0;
+
+        if( a.coefficients().length > b.coefficients().length ) {
+            longer = a.coefficients().length;
+            shorter = b.coefficients().length;
+        } else {
+            longer = b.coefficients().length;
+            shorter = a.coefficients().length;
+        }
+
+        double[] c = new double[ longer ];
+
+        for( int i = 0; i < shorter; i++ )
+            c[ i ] = add ? a.coefficients()[ i ] + b.coefficients()[ i ] :
+                        a.coefficients()[ i ] - b.coefficients()[ i ];
+
+        if( longer == shorter )
+            return new Polynomial( c );
+
+        for( int i = shorter; i < longer; i++ )
+            c[i] = longer == b.coefficients().length ?
+                b.coefficients()[ i ] : a.coefficients()[ i ];
+
+        return new Polynomial( c );
+    }
+
+    public static void main(String[] args) {
+        
     }
 }

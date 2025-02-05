@@ -14,11 +14,11 @@ public class Quadratic extends Polynomial
 
     public Point vertex()
     {
-        return null;
+        return Calc.derivative( this ).xIntercepts()[ 0 ];
     }
 
     public Point[] xIntercepts( boolean allowComplex )
     {
-        return null;
+        return this.xIntercepts();
     }
 }

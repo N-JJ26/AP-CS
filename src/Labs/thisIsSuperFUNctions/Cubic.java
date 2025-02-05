@@ -16,6 +16,6 @@ public class Cubic extends Polynomial
 
     public String toString()
     {
-        return toStr;
+        return this.toString();
     }
 }
