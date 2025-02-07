@@ -6,9 +6,28 @@ public class Polynomial extends Function
 
     public Polynomial( double[] coefficients )
     {
-        super(); //unnecessary
-        a = coefficients;
-    }
+        int count = 0;
+
+        if( Math.abs( coefficients[ coefficients.length - 1 ] - 0.0 ) > Calc.EPSILON )
+        {
+            a = coefficients;
+            return;
+        }
+        else
+            for( int i = coefficients.length - 1; i >= 0; i-- )
+                if( Math.abs( coefficients[ i ] - 0.0 ) > Calc.EPSILON )
+                {
+                    count = i;
+                    break;
+                }
+
+        double[] newCoeff = new double[ count + 1 ];
+
+        for( int i = 0; i < newCoeff.length; i++ )
+            newCoeff[ i ] = coefficients[ i ];
+
+        a = newCoeff;
+}
 
     public int compareTo( Polynomial other, double a, double b )
     {
@@ -76,7 +95,7 @@ public class Polynomial extends Function
         return a[ 0 ];
     }
 
-    public double degree()
+    public int degree()
     {
         return a.length - 1;
     }
@@ -112,13 +131,39 @@ public class Polynomial extends Function
     public String toString()
     {
         String str = "y = ";
-        for( int i = a.length - 1; i >= 0; i-- ) {
-            String num = "" + a[i];
-            str += ( num.charAt( 0 ) == 'y' ? "" : "+" ) +
-                        a[ i ] + "x^" + i;
+        if( a.length == 1 )
+            str += a[0];
+        else if( a.length == 2 )
+        {
+            str += linearString();
+        }
+        else
+        {
+            str += a[ a.length - 1] + "x^" + this.degree();
+            for( int i = a.length - 2; i >= 2; i-- )
+            {
+                String num = "" + a[ i ];
+
+                str +=
+                ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + a[ i ] ) +
+                    "x^" + i;
+            }
+
+            String num = "" + a[ 1 ];
+            str += "" +
+            ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " ) +
+                linearString();
         }
         return str;
-        //TODO: make work
+    }
+
+    private String linearString()
+    {
+        String str = "";
+        String num = "" + a[ 0 ];
+        str += a[ 1 ] + "x" +
+                ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + a[ 0 ] );
+        return str;
     }
 
     public static Polynomial add( Polynomial a, Polynomial b )
@@ -164,6 +209,20 @@ public class Polynomial extends Function
     }
 
     public static void main(String[] args) {
-        
+        Polynomial p = new Polynomial(new double[]{
+            -3.0,
+            -17.0,
+            5.0
+        });
+
+        Polynomial q = new Polynomial(new double[]{
+            2.0,
+            -5.0,
+            17.9,
+            -3
+        });
+
+        System.out.println(p);
+        System.out.println(q);
     }
 }
