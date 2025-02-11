@@ -1,7 +1,13 @@
 package src.Labs.thisIsSuperFUNctions;
 
 import java.util.ArrayList;
-
+/**
+ * Calc contains class-level methods for several different calculations necessary
+ *  for student notes and laboratories
+ *
+ * @author Mr. DeGroat
+ * @version March 8, 2024
+ */
 public class Calc
 {
     /** one-thousandth */
