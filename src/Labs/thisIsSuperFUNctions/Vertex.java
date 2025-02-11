@@ -20,37 +20,38 @@ public class Vertex extends Quadratic
     public String transformations()
     {
         double a = this.leadingCoefficient();
-        String str = "right-side up/upside down: ";
+        String str = "";
 
-        if( Math.abs( a - 0.0 ) < Calc.EPSILON )
-            str += "right-side up";
+        if( a > 0 )
+            str += "right-side up/upside down: right-side up";
         else
-            str += "upside down";
+            str += "right-side up/upside down: upside down";
 
-        str += "\nstretch/squish: ";
+        str += "\n";
         if( Math.abs( a ) < 1.0 && Math.abs( a ) > 0.0 )
-            str += "squished by " + a;
-        else
-            str += "stretched by " + a;
+            str += "stretch/squish: stretched by " + a;
+        else if( Math.abs( a ) > 1.0 )
+            str += "stretch/squish: squished by " + a;
 
-        str += "\nleft/right: ";
+        str += "\n";
         if( vertex.getX() > 0 )
-            str += "right by " + vertex.getX();
-        else
-            str += "left by " + vertex.getX();
+            str += "left/right: right by " + vertex.getX();
+        else if( vertex.getY() < 0 )
+            str += "left/right: left by " + vertex.getX();
 
-        str += "\nup/down: ";
+        str += "\n";
         if( vertex.getY() > 0 )
-            str += "right by " + vertex.getY();
-        else
-            str += "left by " + vertex.getY();
+            str += "up/down: right by " + vertex.getY();
+        else if( vertex.getY() < 0 )
+            str += "up/down: left by " + vertex.getY();
 
         return str;
     }
 
     public String toString()
     {
-        return super.toString();
+        return "y = " + this.leadingCoefficient() +
+                "*(x - " + vertex.getX() + ")^2 + " + vertex.getY();
     }
 
     public String toString( boolean generalForm )
