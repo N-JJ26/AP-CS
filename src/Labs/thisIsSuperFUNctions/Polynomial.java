@@ -146,6 +146,8 @@ public class Polynomial extends Function
             str += a[ a.length - 1] + "x^" + this.degree();
             for( int i = a.length - 2; i > 1; i-- )
             {
+                if( Math.abs( a[i] - 0.0 ) < Calc.EPSILON )
+                    continue;
                 String num = "" + a[ i ];
 
                 str +=
@@ -154,9 +156,10 @@ public class Polynomial extends Function
             }
 
             String num = "" + a[ 1 ];
-            str +=
-            ( num.charAt( 0 ) == '-' ? " - " + linearString().substring( 1 )
-                : " + " + linearString() );
+            if( !linearString().equals("") )
+                str +=
+                ( num.charAt( 0 ) == '-' ? " - " + linearString().substring( 1 )
+                    : " + " + linearString() );
         }
         return str;
     }
@@ -165,8 +168,18 @@ public class Polynomial extends Function
     {
         String str = "";
         String num = "" + a[ 0 ];
-        str += a[ 1 ] + "x" +
-                ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + a[ 0 ] );
+
+        if( Math.abs( a[0] - 0.0 ) < Calc.EPSILON &&
+            Math.abs( a[1] - 0.0 ) < Calc.EPSILON )
+            return str;
+        
+        if( Math.abs( a[1] - 0.0 ) < Calc.EPSILON )
+            str += a[0];
+        else if( Math.abs( a[0] - 0.0 ) < Calc.EPSILON )
+            str += a[1] + "x";
+        else
+            str += a[ 1 ] + "x" +
+                    ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + a[ 0 ] );
         return str;
     }
 
@@ -205,16 +218,19 @@ public class Polynomial extends Function
         if( longer == shorter )
             return new Polynomial( c );
 
+        double multiplier = add ? 1 : -1 ;
         for( int i = shorter; i < longer; i++ )
             c[i] = longer == b.coefficients().length ?
-                b.coefficients()[ i ] : a.coefficients()[ i ];
+                multiplier * b.coefficients()[ i ] :
+                multiplier * a.coefficients()[ i ];
 
         return new Polynomial( c );
     }
 
     public static void main(String[] args) {
-        Vertex p = new Vertex(0, 0, 0);
+        Vertex p = new Vertex(1.5, 4, 2);
 
         System.out.println(p);
+        System.out.println(p.transformations());
     }
 }
