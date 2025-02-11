@@ -1,5 +1,12 @@
 package src.Labs.thisIsSuperFUNctions;
 
+/**
+ * Linear Polynomial Function in point-slope form y - y0 = m*( x - x0 ) 
+ *  where the Point = ( x0, y0 ) is any point on the line and m != 0
+ *
+ * @author Nate J, Avi D.
+ * @version February 10, 2025
+ */
 public class PointSlope extends Linear
 {
     private Point point;
