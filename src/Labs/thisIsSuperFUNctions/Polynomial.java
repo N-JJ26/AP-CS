@@ -151,7 +151,7 @@ public class Polynomial extends Function
                 String num = "" + a[ i ];
 
                 str +=
-                ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + a[ i ] )
+                ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + num )
                     + "x^" + i;
             }
 
