@@ -213,13 +213,7 @@ public class Polynomial extends Function
     }
 
     public static void main(String[] args) {
-        Polynomial p = new Polynomial(new double[]{
-            6.0,
-            15.0,
-            -20,
-            4.5,
-            Math.PI
-        });
+        Vertex p = new Vertex(0, 0, 0);
 
         System.out.println(p);
     }

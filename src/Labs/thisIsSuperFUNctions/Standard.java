@@ -10,16 +10,19 @@ public class Standard extends Linear
         this.B = B;
         this.C = C;
 
-        super( ( double )( -A ) / B, ( ( double )C ) / B ); //y = -A/B x + C/B
+        super( ( double )( -A ) / B, ( ( double )C ) / B );
     }
 
     public String toString()
     {
-        return null;
+        return "";
     }
 
     public String toString( boolean slopeIntercept )
     {
-        return null;
+        if( slopeIntercept )
+            return this.toString();
+        else
+            return super.toString();
     }
 }

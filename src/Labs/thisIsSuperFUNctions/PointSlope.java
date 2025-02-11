@@ -45,9 +45,7 @@ public class PointSlope extends Linear
     public void setPoint( Point point )
     {
         if( point == null )
-        {
             return;
-        }
         this.point = point;
     }
 }

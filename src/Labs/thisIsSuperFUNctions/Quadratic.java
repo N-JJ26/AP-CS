@@ -4,7 +4,7 @@ public class Quadratic extends Polynomial
 {
     public Quadratic( double a, double b, double c )
     {
-        super( new double[]{ a, b, c } );
+        super( new double[]{ c, b, a } );
     }
 
     public Quadratic()
@@ -14,7 +14,8 @@ public class Quadratic extends Polynomial
 
     public Point vertex()
     {
-        return Calc.derivative( this ).xIntercepts()[ 0 ];
+        double xValue = Calc.derivative( this ).xIntercepts()[ 0 ].getX();
+        return new Point( xValue, this.fOf(xValue) );
     }
 
     public Point[] xIntercepts( boolean allowComplex )

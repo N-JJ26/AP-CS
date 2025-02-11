@@ -15,7 +15,7 @@ public class Factored extends Quadratic
 
     public String toString()
     {
-        return String.format("( x-%f )*( x-%f )", p, q);
+        return String.format("( x-%f )*( x-%f )", p, q); //fix
     }
 
     public String toString( boolean generalForm )

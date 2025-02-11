@@ -16,6 +16,4 @@ public class Linear extends Polynomial
     {
         return this.leadingCoefficient();
     }
-
-    
 }

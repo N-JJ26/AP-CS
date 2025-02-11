@@ -14,7 +14,7 @@ public class Cubic extends Polynomial
     * Constructs a Cubic Polynomial Function of the form a*x^3 + b*x^2 + c*x + d
      *
      * @param a the int coefficient of the cubed-term ( != 0, defaults to 1 )
-    * @param b the int coefficient of the squared-term
+     * @param b the int coefficient of the squared-term
      * @param c the int coefficient of the linear-term
      * @param d the int constant
      */
@@ -22,6 +22,7 @@ public class Cubic extends Polynomial
     {
         super( new double[]{ a, b, c, d } );
     }
+
     /**
     * Constructs a Cubic Polynomial Function of the form a*x^3 + b*x^2 + c*x + d
     *
@@ -31,7 +32,7 @@ public class Cubic extends Polynomial
      */
     public Cubic( int p, int q, int r )
     {
-        this( 0, 0, 0, 0 );
+        this( 1, p + q + r, p * q + p * r + q * r, p * q * r );
     }
 
     /**
