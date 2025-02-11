@@ -8,7 +8,8 @@ public class Polynomial extends Function
     {
         int count = 0;
 
-        if( Math.abs( coefficients[ coefficients.length - 1 ] - 0.0 ) > Calc.EPSILON )
+        if( coefficients.length == 0 ||
+            Math.abs( coefficients[ coefficients.length - 1 ] - 0.0 ) > Calc.EPSILON )
         {
             a = coefficients;
             return;
@@ -131,7 +132,10 @@ public class Polynomial extends Function
     public String toString()
     {
         String str = "y = ";
-        if( a.length == 1 )
+
+        if( a.length == 0 )
+            str += "0";
+        else if( a.length == 1 )
             str += a[0];
         else if( a.length == 2 )
         {
@@ -140,19 +144,19 @@ public class Polynomial extends Function
         else
         {
             str += a[ a.length - 1] + "x^" + this.degree();
-            for( int i = a.length - 2; i >= 2; i-- )
+            for( int i = a.length - 2; i > 1; i-- )
             {
                 String num = "" + a[ i ];
 
                 str +=
-                ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + a[ i ] ) +
-                    "x^" + i;
+                ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + a[ i ] )
+                    + "x^" + i;
             }
 
             String num = "" + a[ 1 ];
-            str += "" +
-            ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " ) +
-                linearString();
+            str +=
+            ( num.charAt( 0 ) == '-' ? " - " + linearString().substring( 1 )
+                : " + " + linearString() );
         }
         return str;
     }
@@ -210,19 +214,13 @@ public class Polynomial extends Function
 
     public static void main(String[] args) {
         Polynomial p = new Polynomial(new double[]{
-            -3.0,
-            -17.0,
-            5.0
-        });
-
-        Polynomial q = new Polynomial(new double[]{
-            2.0,
-            -5.0,
-            17.9,
-            -3
+            6.0,
+            15.0,
+            -20,
+            4.5,
+            Math.PI
         });
 
         System.out.println(p);
-        System.out.println(q);
     }
 }
