@@ -20,7 +20,7 @@ public class Cubic extends Polynomial
      */
     public Cubic( int a, int b, int c, int d )
     {
-        super( new double[]{ a, b, c, d } );
+        super( new double[]{ d, c, b, a == 0 ? 1 : a } );
     }
 
     /**
@@ -41,6 +41,6 @@ public class Cubic extends Polynomial
     */
     public String toString()
     {
-        return this.toString();
+        return super.toString();
     }
 }
