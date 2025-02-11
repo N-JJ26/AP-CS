@@ -1,5 +1,12 @@
 package src.Labs.thisIsSuperFUNctions;
 
+/**
+ * Interval is an open or closed interval ( a, b ) or [ a, b ], etc
+ *  such that the left-bound x-value a and a right-bound x-value b are a <= b 
+ *
+ * @author Mr. DeGroat
+ * @version March 8, 2024
+ */
 public class Interval
 {
     private double left;
