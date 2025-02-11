@@ -1,5 +1,12 @@
 package src.Labs.thisIsSuperFUNctions;
 
+/**
+ * A superclass for the top of the hierarchy within
+ *  this program, handles Function notation
+ *
+ * @author Mr. DeGroat
+ * @version March 8, 2024
+ */
 public class Function
 {
     private static int totalPolys = 0;
