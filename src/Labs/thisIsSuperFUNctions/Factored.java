@@ -10,7 +10,7 @@ public class Factored extends Quadratic
 {
     //(x-p)(x-q)
     private int p, q;
-//##########################################################################################
+
     /**
      * Constructs a Quadratic Polynomial Function of the form ( x - p )*( x - q )
      *
