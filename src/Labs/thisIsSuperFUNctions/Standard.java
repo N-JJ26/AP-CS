@@ -37,7 +37,6 @@ public class Standard extends Linear
         return "";
     }
 
-//########################################################################################
     /**
      * Returns the String that represents the Linear Function as f(x) = m*x + b
      *
