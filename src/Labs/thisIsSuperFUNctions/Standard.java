@@ -11,7 +11,7 @@ public class Standard extends Linear
     private int A, B, C;
 
     /**
-     * Constructs a StandardForm Linear Polynomial Function Ax + By = C, 
+     * Constructs a StandardForm Linear Polynomial Function Ax + By = C,
      *  where A, B, and C are integers and A != 0 or B != 0 else default to x - y = 0
      *
      * @param A the coefficient of x, where A is an integer
@@ -34,7 +34,13 @@ public class Standard extends Linear
      */
     public String toString()
     {
-        return "";
+        String numA = "" + A;
+        String numB = "" + B;
+        String numC = "" + C;
+
+        return numA + "x" +
+            ( numB.charAt( 0 ) == '-' ? " - " + numB.substring( 1 ) : " + " + numB ) +
+            "y = " + numC;
     }
 
     /**

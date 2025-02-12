@@ -32,7 +32,14 @@ public class Factored extends Quadratic
      */
     public String toString()
     {
-        return String.format("( x-%f )*( x-%f )", p, q); //fix
+        String numP = "" + p;
+        String numQ = "" + q;
+
+        return "y = ( x" +
+            ( numP.charAt( 0 ) == '-' ? " + " + numP.substring( 1 ) : " - " + numP ) +
+            " )*( x" +
+            ( numQ.charAt( 0 ) == '-' ? " + " + numQ.substring( 1 ) : " - " + numQ ) +
+            " )";
     }
 
     /**

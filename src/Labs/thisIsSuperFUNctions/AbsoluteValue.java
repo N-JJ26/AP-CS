@@ -10,4 +10,12 @@ public class AbsoluteValue extends Function
         this.a = a;
         this.vertex = vertex;
     }
+
+    public AbsoluteValue( double a, double h, double k )
+    {
+        vertex = new Point( h, k );
+        this.a = a;
+    }
+
+    
 }

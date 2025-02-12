@@ -47,20 +47,7 @@ public class Polynomial extends Function
 
     public int compareTo( Polynomial other, Interval interval )
     {
-        if ( other == null || interval == null
-            || interval.getLeftBound() > interval.getRightBound() )
-            return 1;
-
-        double intervalLength = interval.getRightBound() - interval.getLeftBound();
-
-        if( Calc.areaUnder( this, interval ) / intervalLength
-            > Calc.areaUnder( other, interval ) / intervalLength )
-            return 1;
-        if( Calc.areaUnder( this, interval ) / intervalLength
-            < Calc.areaUnder( other, interval ) / intervalLength )
-            return -1;
-        else
-            return 0;
+        return this.compareTo( other, interval.getLeftBound(), interval.getRightBound() );
     }
 
     //public Interval[] decreasing
@@ -179,7 +166,7 @@ public class Polynomial extends Function
             str += a[1] + "x";
         else
             str += a[ 1 ] + "x" +
-                    ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + a[ 0 ] );
+                    ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + num );
         return str;
     }
 
@@ -228,9 +215,8 @@ public class Polynomial extends Function
     }
 
     public static void main(String[] args) {
-        Vertex p = new Vertex(1.5, 4, 2);
+        Standard p = new Standard(5, 10, -3);
 
         System.out.println(p);
-        System.out.println(p.transformations());
     }
 }
