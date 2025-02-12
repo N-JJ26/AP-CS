@@ -38,6 +38,8 @@ public class Cubic extends Polynomial
     /**
     * Shows the Cubic Polynomial Function in general or factored form,
     *  determined by how it was constructed
+    *
+    * @return "y = a*x^3 + b*x^2 + c*x + d" or "y = ( x - p )*( x - q )*( x - r )"
     */
     public String toString()
     {
