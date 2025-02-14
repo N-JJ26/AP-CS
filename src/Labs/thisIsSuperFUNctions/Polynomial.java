@@ -87,7 +87,6 @@ public class Polynomial extends Function
      * Returns the open interval of x-values on which the function is
      8 increasing, i.e. slope > 0.0, if none exist, returns an empty array, {}
      *
-     * @override increasing in class Function
      * @return the open interval of x-values on which the function is increasing,
      *  i.e. slope > 0.0
      */
@@ -97,7 +96,6 @@ public class Polynomial extends Function
      * Returns the open interval of x-values on which the function is
      *  decreasing, i.e. slope < 0.0, if none exist, returns an empty array, {}
      *
-     * @override decreasing in class Function
      * @return the open interval of x-values on which the function is decreasing,
      *  i.e. slope < 0.0
      */
@@ -106,7 +104,6 @@ public class Polynomial extends Function
     /**
      * Calculates the y-value that corresponds to the x-value parameter
      *
-     * @override fOf in class function
      * @param the x-value that is "plugged into" the Polynomial
      * @return the y coordinate of the Point on the curve at the given x-value
      */
@@ -123,7 +120,6 @@ public class Polynomial extends Function
      * Determines the slope of the line tangent to the Polynomial
      *  at the given x-value using the derivative of the Polynomial
      *
-     * @override fPrimeOf in class Function
      * @param a the x-value that is "plugged into" the derivative
      * @return the slope of the tangent line
      */
@@ -214,7 +210,6 @@ public class Polynomial extends Function
     /**
      * Checks if two Polynomials are equal
      *
-     * @override equals in class java.lang.Object
      * @param obj the object to the compared
      * @return true if all the coefficients match, false otherwise
      */
@@ -232,7 +227,6 @@ public class Polynomial extends Function
      * Concatenates a String that represents the Polynomial Function as
      *  f(x) = a(n)*x^n + a(n-1)*x^(n-1) + ... + a(1)*x + a(0)
      *
-     * @override toString in class Function
      * @return the Polynomial written in descending order, ex. f(x) = 5x^2 + 7x - 1
      */
     public String toString()
