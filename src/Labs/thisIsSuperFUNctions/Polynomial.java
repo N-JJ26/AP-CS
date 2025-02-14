@@ -1,9 +1,24 @@
 package src.Labs.thisIsSuperFUNctions;
 
+/**
+ * Polynomial is-a Function that is defined as a series of double coefficients on
+ *  integer powers of x with a degree of n, where a(n) != 0 when n > 0, or any
+ *  real when n == 0 a(n)*x^n + a(n-1)*x^(n-1) + ... + a(1)*x + a(0)
+ *
+ * @author Avi D, Nate J
+ * @version February 14, 2025
+ */
 public class Polynomial extends Function
 {
     private double[] a;
 
+    /**
+     * Construct a Polynomial object by defining the coefficients a(0) through a(n),
+     *  where a(0) is the first element in the double[]
+     *
+     * @param coefficients the array of double coefficients from a(0)
+     *  through a(n), with a(n) != 0, unless it is the constant polynomial = 0
+     */
     public Polynomial( double[] coefficients )
     {
         int count = 0;
@@ -29,7 +44,15 @@ public class Polynomial extends Function
 
         a = newCoeff;
 }
-
+    /**
+     * Compares the average value of this Polynomial to an
+     *  other Polynomial over a given closed interval [ a, b ], where a <= b
+     *
+     * @param a the left-bound of the interval
+     * @param b the right-bound of the interval
+     * @return -1 if this Polynomial is less than the explicit parameter
+     *  Object, 0 if equal, and +1 if this is greater than other or null or a > b.
+     */
     public int compareTo( Polynomial other, double a, double b )
     {
         if( other == null || a > b )
@@ -45,15 +68,48 @@ public class Polynomial extends Function
             return 0;
     }
 
+    /**
+     * Compares the average value of this Polynomial to an other Polynomial
+     * over a given closed interval [ a, b ], where a <= b
+     *
+     * @param other the "other" Polynomial against this Polynomial
+     * @param interval the closed interval for this comparison [ a,b ]
+     * @return -1 if this Polynomial is less than the explicit parameter Object,
+     *  0 if equal, and +1 if this is greater than other or null or 
+     *  the interval is not closed.
+     */
     public int compareTo( Polynomial other, Interval interval )
     {
         return this.compareTo( other, interval.getLeftBound(), interval.getRightBound() );
     }
 
-    //public Interval[] decreasing
-
+    /**
+     * Returns the open interval of x-values on which the function is
+     8 increasing, i.e. slope > 0.0, if none exist, returns an empty array, {}
+     *
+     * @override increasing in class Function
+     * @return the open interval of x-values on which the function is increasing,
+     *  i.e. slope > 0.0
+     */
     //public Interval[] increasing
 
+    /**
+     * Returns the open interval of x-values on which the function is
+     *  decreasing, i.e. slope < 0.0, if none exist, returns an empty array, {}
+     *
+     * @override decreasing in class Function
+     * @return the open interval of x-values on which the function is decreasing,
+     *  i.e. slope < 0.0
+     */
+    //public Interval[] decreasing
+
+    /**
+     * Calculates the y-value that corresponds to the x-value parameter
+     *
+     * @override fOf in class function
+     * @param the x-value that is "plugged into" the Polynomial
+     * @return the y coordinate of the Point on the curve at the given x-value
+     */
     public double fOf( double x )
     {
         double sum = 0;
@@ -63,36 +119,78 @@ public class Polynomial extends Function
         return sum;
     }
 
+    /**
+     * Determines the slope of the line tangent to the Polynomial
+     *  at the given x-value using the derivative of the Polynomial
+     *
+     * @override fPrimeOf in class Function
+     * @param a the x-value that is "plugged into" the derivative
+     * @return the slope of the tangent line
+     */
     public double fPrimeOf( double a )
     {
         return Calc.derivative( this ).fOf( a );
     }
 
+    /**
+     * Finds a line, in point-slope form, that is tangent to this
+     *  Polynomial at the given x-value
+     *
+     * @param x the x-value of the point of tangency
+     * @return the tangent line in point-slope form at the given x-value
+     */
     public PointSlope tangent( double x )
     {
         return new PointSlope( new Point( x, fOf( x ) ), fPrimeOf( x ) );
     }
 
+    /**
+     * Returns the Point[] = { ( x1, 0 ), ( x2, 0 ), ... } of this Polynomial object
+     *
+     * @return the x-ints = { ( x1, 0 ), ( x2, 0 ), ... }
+     */
     public Point[] xIntercepts()
     {
         return Calc.xIntercepts( this );
     }
 
+    /**
+     * Returns the Point = ( 0, a(0) ) of this Polynomial object
+     *
+     * @return the y-int = ( 0, a(0) )
+     */
     public double yIntercept()
     {
         return a[ 0 ];
     }
 
+    /**
+     * The degree of a Polynomial a(n)*x^n + ... a(1)*x + a(0) is n, where a(n) != 0
+     *  unless a(0) = 0 is the Polynomial
+     *
+     * @return the degree n of the Polynomial
+     */
     public int degree()
     {
         return a.length - 1;
     }
 
+    /**
+     * Returns the leading coefficient of the Polynomial
+     *
+     * @return a(n), the leading coefficient
+     */
     public double leadingCoefficient()
     {
         return a[ a.length - 1 ];
     }
 
+    /**
+     * Returns a copy of the coefficients as an double[] in the order a(0),
+     * a(1), ... a(n)
+     *
+     * @return a copy of the coefficients of the Polynomial, a(0) through a(n)
+     */
     public double[] coefficients()
     {
         double[] copy = new double[ a.length ];
@@ -101,11 +199,25 @@ public class Polynomial extends Function
         return a;
     }
 
+    /**
+     * Determines if the given Point is within one-thousandth of the Polynomial's curve
+     *
+     * @param p a Point that may be on the Polynomial's curve
+     * @return true if the Point p, != null, is a solution to the Polynomial's
+     *  equation, false otherwise
+     */
     public boolean isOnCurve( Point p )
     {
         return Math.abs( fOf( p.getX() ) - p.getY() ) < Calc.EPSILON;
     }
 
+    /**
+     * Checks if two Polynomials are equal
+     *
+     * @override equals in class java.lang.Object
+     * @param obj the object to the compared
+     * @return true if all the coefficients match, false otherwise
+     */
     public boolean equals( Polynomial other )
     {
         if( other.coefficients().length != a.length || other == null )
@@ -116,6 +228,13 @@ public class Polynomial extends Function
         return true;
     }
 
+    /**
+     * Concatenates a String that represents the Polynomial Function as
+     *  f(x) = a(n)*x^n + a(n-1)*x^(n-1) + ... + a(1)*x + a(0)
+     *
+     * @override toString in class Function
+     * @return the Polynomial written in descending order, ex. f(x) = 5x^2 + 7x - 1
+     */
     public String toString()
     {
         String str = "y = ";
@@ -151,6 +270,7 @@ public class Polynomial extends Function
         return str;
     }
 
+
     private String linearString()
     {
         String str = "";
@@ -170,15 +290,30 @@ public class Polynomial extends Function
         return str;
     }
 
+    /**
+     * Generates a new Polynomial f + g
+     *
+     * @param f one of the Polynomials to be added together
+     * @param g the other Polynomial to be added to f
+     * @return the Polynomial f + g
+     */
     public static Polynomial add( Polynomial a, Polynomial b )
     {
         return arithmetic(a, b, true);
     }
 
+    /**
+     * Generates a new Polynomial f - g
+     *
+     * @param f the minuend of the subtraction
+     * @param g the subtrahend of the subtraction
+     * @return the Polynomial f - g
+     */
     public static Polynomial subtract( Polynomial a, Polynomial b )
     {
         return arithmetic(a, b, false);
     }
+
 
     private static Polynomial arithmetic( Polynomial a, Polynomial b, boolean add )
     {
@@ -214,6 +349,12 @@ public class Polynomial extends Function
         return new Polynomial( c );
     }
 
+    /**
+     * Main class, used for testing. To be deleted
+     *
+     * @param soz
+     * @return gleep glorp
+     */
     public static void main(String[] args) {
         Standard p = new Standard(5, 10, -3);
 
