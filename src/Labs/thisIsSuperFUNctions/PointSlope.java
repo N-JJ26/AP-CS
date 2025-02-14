@@ -48,4 +48,17 @@ public class PointSlope extends Linear
             return;
         this.point = point;
     }
+
+    public String toString()
+    {
+        return null;
+    }
+
+    public String toString( boolean slopeIntercept )
+    {
+        if( slopeIntercept )
+            return super.toString();
+        else
+            return this.toString();
+    }
 }

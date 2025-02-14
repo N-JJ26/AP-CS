@@ -8,7 +8,6 @@ package src.Labs.thisIsSuperFUNctions;
  */
 public class Factored extends Quadratic
 {
-    //(x-p)(x-q)
     private int p, q;
 
     /**
