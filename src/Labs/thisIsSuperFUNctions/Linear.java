@@ -16,7 +16,7 @@ public class Linear extends Polynomial
      */
     public Linear( double m, double b )
     {
-        super( new double[]{ m, b } );
+        super( new double[]{ b, m } );
     }
 
     /**

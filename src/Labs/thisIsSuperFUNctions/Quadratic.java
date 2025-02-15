@@ -35,7 +35,8 @@ public class Quadratic extends Polynomial
      */
     public Point vertex()
     {
-        return null;
+        double xValue = Calc.derivative( this ).xIntercepts()[ 0 ].getX();
+        return new Point( xValue, this.fOf( xValue ) );
     }
 
     /**
@@ -49,6 +50,23 @@ public class Quadratic extends Polynomial
      */
     public Point[] xIntercepts( boolean allowComplex )
     {
-        return null;
+        if ( allowComplex )
+        {
+            double[] coeffs = this.coefficients();
+
+            double discriminant = ( coeffs[ 1 ] * coeffs[ 1 ] )
+                    - 4 * coeffs[ 0 ] * coeffs[ 2 ];
+
+            if( discriminant >= 0 ) //maybe wont work
+                return this.xIntercepts();
+
+            double imaginary = Math.sqrt( Math.abs( discriminant ) );
+            double xValue = -coeffs[ 1 ] / 2 * coeffs[ 0 ];
+
+            return new Point[]{ new Point( xValue, imaginary / 2 * coeffs[ 0 ] ),
+                                new Point( xValue, -( imaginary / 2 * coeffs[ 0 ] ) ) };
+        }
+        else
+            return this.xIntercepts();
     }
 }

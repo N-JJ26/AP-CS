@@ -51,7 +51,16 @@ public class PointSlope extends Linear
 
     public String toString()
     {
-        return null;
+        String[] nums = new String[]{"" + point.getX(),
+                                    "" + point.getY()};
+
+        for( int i = 0; i < nums.length; i++ )
+            if( nums[ i ].charAt( 0 ) == '-' )
+                nums[ i ] = " + " + nums[ i ].substring( 1 );
+            else
+                nums[ i ] = " - " + nums[ i ];
+        return "y" + nums[ 1 ] + " = " + this.leadingCoefficient() + "*(x" + nums[ 0 ] +
+                    ")";
     }
 
     public String toString( boolean slopeIntercept )
