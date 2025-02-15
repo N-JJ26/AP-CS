@@ -31,14 +31,18 @@ public class Factored extends Quadratic
      */
     public String toString()
     {
-        String numP = "" + p;
-        String numQ = "" + q;
+        String[] nums = new String[]{
+            "" + p,
+            "" + q
+        };
 
-        return "y = ( x" +
-            ( numP.charAt( 0 ) == '-' ? " + " + numP.substring( 1 ) : " - " + numP ) +
-            " )*( x" +
-            ( numQ.charAt( 0 ) == '-' ? " + " + numQ.substring( 1 ) : " - " + numQ ) +
-            " )";
+        for( int i = 0; i < nums.length; i++ )
+            if( nums[ i ].charAt( 0 ) == '-' )
+                nums[ i ] = " + " + nums[ i ].substring( 1 );
+            else
+                nums[ i ] = " - " + nums[ i ];
+
+        return "y = (x" + nums[ 0 ] + ")(x" + nums[ 1 ] + ")";
     }
 
     /**

@@ -21,6 +21,7 @@ public class Cubic extends Polynomial
     public Cubic( int a, int b, int c, int d )
     {
         super( new double[]{ d, c, b, a == 0 ? 1 : a } );
+        toStr = "general";
     }
 
     /**
@@ -33,6 +34,7 @@ public class Cubic extends Polynomial
     public Cubic( int p, int q, int r )
     {
         this( 1, p + q + r, p * q + p * r + q * r, p * q * r );
+        toStr = "factored";
     }
 
     /**
@@ -43,6 +45,25 @@ public class Cubic extends Polynomial
     */
     public String toString()
     {
-        return super.toString();
+        if( toStr.equals( "general" ) )
+            return super.toString();
+        else
+        {
+            toStr = "";
+
+            String[] nums = new String[]{
+                Calc.clean( this.xIntercepts()[ 0 ].getX() ),
+                Calc.clean( this.xIntercepts()[ 1 ].getX() ),
+                Calc.clean( this.xIntercepts()[ 2 ].getX() )
+            };
+
+            for( int i = 0; i < nums.length; i++ )
+                if( nums[ i ].charAt( 0 ) == '-' )
+                    nums[ i ] = " - " + nums[ i ].substring( 1 );
+                else
+                    nums[ i ] = " + " + nums[ i ];
+            toStr = "y = (x" + nums[ 0 ] + ")(x" + nums[ 1 ] + ")(x" + nums[ 2 ] + ")";
+            return toStr;
+        }
     }
 }
