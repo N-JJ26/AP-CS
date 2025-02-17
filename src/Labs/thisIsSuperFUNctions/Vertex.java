@@ -20,7 +20,7 @@ public class Vertex extends Quadratic
      */
     public Vertex( double a, int h, int k )
     {
-        super( checkA(a, h, k), -2 * h * a, a * h * h + k );
+        super( checkA( a, h, k ), -2 * h * a, a * h * h + k );
 
         vertex = new Point( h, k );
     }
