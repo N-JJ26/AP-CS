@@ -243,19 +243,24 @@ public class Polynomial extends Function
         }
         else
         {
-            str += a[ a.length - 1] + "x^" + this.degree();
+            str += Math.abs( Math.abs( a[ a.length - 1 ] - 1.0 ) ) < Calc.EPSILON ?
+                "x^" + this.degree() :
+                Calc.clean( a[ a.length - 1] ) + "x^" + this.degree();
             for( int i = a.length - 2; i > 1; i-- )
             {
                 if( Math.abs( a[i] - 0.0 ) < Calc.EPSILON )
                     continue;
-                String num = "" + a[ i ];
+                String num = " " + Calc.clean( a[ i ] );
+
+                if( Math.abs( Math.abs( a[ i ] ) - 1.0 ) < Calc.EPSILON )
+                    num = num.charAt( 0 ) == '-' ? "-" : " ";
 
                 str +=
-                ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + num )
+                ( num.charAt( 1 ) == '-' ? " - " + num.substring( 2 ) : " +" + num )
                     + "x^" + i;
             }
 
-            String num = "" + a[ 1 ];
+            String num = Calc.clean( a[ 1 ] );
             if( !linearString().equals("") )
                 str +=
                 ( num.charAt( 0 ) == '-' ? " - " + linearString().substring( 1 )
@@ -264,22 +269,29 @@ public class Polynomial extends Function
         return str;
     }
 
-
     private String linearString()
     {
         String str = "";
-        String num = "" + a[ 0 ];
+        String num = Calc.clean( a[ 0 ] );
 
-        if( Math.abs( a[0] - 0.0 ) < Calc.EPSILON &&
-            Math.abs( a[1] - 0.0 ) < Calc.EPSILON )
+        if( Math.abs( a[ 0 ] - 0.0 ) < Calc.EPSILON &&
+            Math.abs( a[ 1 ] - 0.0 ) < Calc.EPSILON )
             return str;
-        
-        if( Math.abs( a[1] - 0.0 ) < Calc.EPSILON )
-            str += a[0];
-        else if( Math.abs( a[0] - 0.0 ) < Calc.EPSILON )
-            str += a[1] + "x";
+        if( Math.abs( a[ 1 ] - 0.0 ) < Calc.EPSILON )
+            str += num;
+        else if( Math.abs( a[ 0 ] - 0.0 ) < Calc.EPSILON )
+            if( Math.abs( Math.abs( a[ 1 ] ) - 1.0 ) < Calc.EPSILON )
+                str += Calc.clean( a[ 1 ] ).charAt( 0 ) == '-' ? "-x" : "x";
+            else
+                str += Calc.clean( a[ 1 ] ) + "x";
         else
-            str += a[ 1 ] + "x" +
+            if( Math.abs( Math.abs( a[ 1 ] ) - 1.0 ) < Calc.EPSILON )
+                str += Calc.clean( a[ 1 ] ).charAt( 0 ) == '-' ? "-x" +
+                    ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + num )
+                    : "x" +
+                    ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + num );
+            else
+                str += Calc.clean( a[ 1 ] ) + "x" +
                     ( num.charAt( 0 ) == '-' ? " - " + num.substring( 1 ) : " + " + num );
         return str;
     }
@@ -307,7 +319,6 @@ public class Polynomial extends Function
     {
         return arithmetic(a, b, false);
     }
-
 
     private static Polynomial arithmetic( Polynomial a, Polynomial b, boolean add )
     {
@@ -341,17 +352,5 @@ public class Polynomial extends Function
                 multiplier * a.coefficients()[ i ];
 
         return new Polynomial( c );
-    }
-
-    /**
-     * Main class, used for testing. To be deleted
-     *
-     * @param soz
-     * @return gleep glorp
-     */
-    public static void main(String[] args) {
-        Standard p = new Standard(5, 10, -3);
-
-        System.out.println(p);
     }
 }

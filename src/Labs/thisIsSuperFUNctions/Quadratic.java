@@ -17,7 +17,14 @@ public class Quadratic extends Polynomial
      */
     public Quadratic( double a, double b, double c )
     {
-        super( new double[]{ a, b, c } );
+        super( new double[]{ c, b, checkA( a ) } );
+    }
+
+    private static double checkA( double a )
+    {
+        if( Math.abs( a - 0.0 ) < Calc.EPSILON )
+            return 1;
+        return a;
     }
 
     /**
@@ -55,16 +62,16 @@ public class Quadratic extends Polynomial
             double[] coeffs = this.coefficients();
 
             double discriminant = ( coeffs[ 1 ] * coeffs[ 1 ] )
-                    - 4 * coeffs[ 0 ] * coeffs[ 2 ];
+                                    - 4 * coeffs[ 2 ] * coeffs[ 0 ];
 
             if( discriminant >= 0 ) //maybe wont work
                 return this.xIntercepts();
 
             double imaginary = Math.sqrt( Math.abs( discriminant ) );
-            double xValue = -coeffs[ 1 ] / 2 * coeffs[ 0 ];
+            double xValue = -coeffs[ 1 ] / ( 2 * coeffs[ 2 ] );
 
-            return new Point[]{ new Point( xValue, imaginary / 2 * coeffs[ 0 ] ),
-                                new Point( xValue, -( imaginary / 2 * coeffs[ 0 ] ) ) };
+            return new Point[]{ new Point( xValue, imaginary / ( 2 * coeffs[ 2 ] ) ),
+                                new Point( xValue, -( imaginary / ( 2 * coeffs[ 2 ] ) ) ) };
         }
         else
             return this.xIntercepts();
