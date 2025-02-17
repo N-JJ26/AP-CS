@@ -52,8 +52,8 @@ public class Standard extends Linear
     public String toString( boolean slopeIntercept )
     {
         if( slopeIntercept )
-            return this.toString();
-        else
             return super.toString();
+        else
+            return this.toString();
     }
 }

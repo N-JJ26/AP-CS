@@ -20,15 +20,20 @@ public class Vertex extends Quadratic
      */
     public Vertex( double a, int h, int k )
     {
-        if( Math.abs( a - 0.0 ) < Calc.EPSILON ) {
-            a++;
-            h -= h;
-            k -= k;
-        }
+        super( checkA(a, h, k), -2 * h * a, a * h * h + k );
 
         vertex = new Point( h, k );
+    }
 
-        super( a, -2 * h * a, a * h * h + k );
+    private static double checkA( double a, int h, int k )
+    {
+        if( Math.abs( a - 0.0 ) < Calc.EPSILON )
+        {
+            a = 1.0;
+            h = 0;
+            k = 0;
+        }
+        return a;
     }
 
     /**
@@ -75,8 +80,26 @@ public class Vertex extends Quadratic
      */
     public String toString()
     {
-        return "y = " + this.leadingCoefficient() +
-                "*(x - " + vertex.getX() + ")^2 + " + vertex.getY();
+        double[] nums = new double[]{
+            this.leadingCoefficient(),
+            vertex.getX(),
+            -vertex.getY()
+        };
+
+        String[] numStr = new String[ nums.length ];
+
+        numStr[ 0 ] = Calc.clean( nums[ 0 ] );
+
+        for( int i = 1; i < nums.length; i++ )
+            if( nums[ i ] == 0.0 )
+                numStr[ i ] = "";
+            else if( ( "" + nums[ i ] ).charAt( 0 ) == '-' )
+                numStr[ i ] = " + " + Calc.clean( nums[ i ] ).substring( 1 );
+            else
+                numStr[ i ] = " - " + Calc.clean( nums[ i ] );
+
+        return "y = " + numStr[ 0 ] +
+                "(x" + numStr[ 1 ] + ")^2" + numStr[ 2 ];
     }
 
     /**
