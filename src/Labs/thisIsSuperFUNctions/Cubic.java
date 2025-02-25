@@ -51,18 +51,24 @@ public class Cubic extends Polynomial
         {
             toStr = "";
 
-            String[] nums = new String[]{
-                Calc.clean( this.xIntercepts()[ 0 ].getX() ),
-                Calc.clean( this.xIntercepts()[ 1 ].getX() ),
-                Calc.clean( this.xIntercepts()[ 2 ].getX() )
-            };
+            String[] nums = new String[ this.xIntercepts().length ];
+
+            for( int i = 0; i < nums.length; i++ )
+            {
+                nums[ i ] = Calc.clean( this.xIntercepts()[ i ].getX() );
+            }
 
             for( int i = 0; i < nums.length; i++ )
                 if( nums[ i ].charAt( 0 ) == '-' )
                     nums[ i ] = " - " + nums[ i ].substring( 1 );
                 else
                     nums[ i ] = " + " + nums[ i ];
-            toStr = "y = (x" + nums[ 0 ] + ")(x" + nums[ 1 ] + ")(x" + nums[ 2 ] + ")";
+
+            toStr = "y = ";
+
+            for( int i = 0; i < nums.length; i++ )
+                toStr += "(x" + nums[ i ] + ")";
+
             return toStr;
         }
     }

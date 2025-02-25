@@ -248,12 +248,17 @@ public class Polynomial extends Function
                 Calc.clean( a[ a.length - 1] ) + "x^" + this.degree();
             for( int i = a.length - 2; i > 1; i-- )
             {
-                if( Math.abs( a[i] - 0.0 ) < Calc.EPSILON )
+                if( Math.abs( a[ i ] - 0.0 ) < Calc.EPSILON )
                     continue;
                 String num = " " + Calc.clean( a[ i ] );
 
                 if( Math.abs( Math.abs( a[ i ] ) - 1.0 ) < Calc.EPSILON )
-                    num = num.charAt( 0 ) == '-' ? "-" : " ";
+                {
+                    num = num.charAt( 0 ) == '-' ? "-" : "+";
+
+                    str += " " + num + " " + "x^" + i;
+                    continue;
+                }
 
                 str +=
                 ( num.charAt( 1 ) == '-' ? " - " + num.substring( 2 ) : " +" + num )
@@ -352,5 +357,15 @@ public class Polynomial extends Function
                 multiplier * a.coefficients()[ i ];
 
         return new Polynomial( c );
+    }
+
+    public void test() {
+        for (double d : a) {
+            System.out.print(d + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Quadratic().equals(new Quadratic(1, 0, 0)));
     }
 }

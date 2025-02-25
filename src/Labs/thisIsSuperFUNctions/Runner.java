@@ -1,5 +1,7 @@
 package src.Labs.thisIsSuperFUNctions;
 
+import java.util.ArrayList;
+
 public class Runner
 {
     private static Polynomial[] polys;
@@ -86,14 +88,43 @@ public class Runner
     }
     private static void eliminateRepeats()
     {
-        //**hint** I used an ArrayList
+
+        ArrayList< Polynomial > polyList = new ArrayList< Polynomial >();
+
+        for( int i = 0; i < polys.length; i++ )
+            polyList.add( polys[ i ] );
+
+        for(int i = 1; i < polyList.size(); i++)
+            if( polyList.get( i ).equals( polyList.get( i - 1 ) ) )
+                polyList.remove( i );
+
+        Polynomial[] newList = new Polynomial[ polyList.size() ];
+
+        for( int i = 0; i < newList.length; i++ )
+            newList[ i ] = polyList.get( i );
+
+        polys = newList;
     }
     private static void sortByCompareTo()
     {
         final int LEFT_BOUND = -10;
         final int RIGHT_BOUND = 10;
         
-        //**hint** I used Insertion Sort, you can use Bubble Sort
+        for( int i = 1; i < polys.length - 1; i++ )
+        {
+            boolean changed = false;
+            for( int j = 0; j < polys.length - i; j++ )
+                if( polys[ j ].compareTo( polys[ j + 1 ], LEFT_BOUND, RIGHT_BOUND) == 1 )
+                {
+                    Polynomial temp = polys[ j ];
+                    polys[ j ] = polys[ j + 1 ];
+                    polys[ j + 1 ] = temp;
+
+                    changed = true;
+                }
+            if( !changed )
+                break;
+        }
     }
     private static void printIntercepts()
     {
@@ -109,7 +140,7 @@ public class Runner
             }
             System.out.println();
             
-            if( /* some condition on poly, false gets it to compile */ true )
+            if( poly instanceof Quadratic )
             {
                 Point[] complex = ( (Quadratic)poly ).xIntercepts( true );
                 System.out.print( "complex zeros (a+bi) = " + complex[ 0 ] );
@@ -123,16 +154,16 @@ public class Runner
     private static void printTransformations()
     {
         for( Polynomial poly : polys )
-            if( /* some condition on poly, false gets it to compile */ false )
+            if( poly instanceof Vertex )
                 System.out.println( poly + "\n" + ( (Vertex)poly ).transformations() );
     }
     private static void printToStrings()
     {
         for( Polynomial poly : polys )
         {
-            if( /* some condition on poly, false gets it to compile */ false )
+            if( poly instanceof Factored )
                 toStrings( (Factored)poly );
-            else if( /* some condition on poly, false gets it to compile */ false )
+            else if( poly instanceof Standard )
                 toStrings( (Standard)poly );
         }
     }
