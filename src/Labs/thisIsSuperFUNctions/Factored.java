@@ -4,7 +4,7 @@ package src.Labs.thisIsSuperFUNctions;
  * Quadratic Polynomial Function in factored form ( x - p )*( x - q )
  *
  * @author Avi D. Nate J
- * @version February 12, 2025
+ * @version February 26, 2025
  */
 public class Factored extends Quadratic
 {
