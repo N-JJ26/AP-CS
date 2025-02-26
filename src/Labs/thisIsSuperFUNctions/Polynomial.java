@@ -43,7 +43,7 @@ public class Polynomial extends Function
             newCoeff[ i ] = coefficients[ i ];
 
         a = newCoeff;
-}
+    }
     /**
      * Compares the average value of this Polynomial to an
      *  other Polynomial over a given closed interval [ a, b ], where a <= b
