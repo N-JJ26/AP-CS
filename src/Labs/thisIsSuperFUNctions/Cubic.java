@@ -4,7 +4,7 @@ package src.Labs.thisIsSuperFUNctions;
  * Cubic Polynomial Function of the form a*x^3 + b*x^2 + c*x + d
  *
  * @author Avi D. Nate J.
- * @version February 10, 2025
+ * @version February 26, 2025
  */
 public class Cubic extends Polynomial
 {
