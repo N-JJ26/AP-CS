@@ -5,7 +5,7 @@ package src.Labs.thisIsSuperFUNctions;
  *  where the Point = ( x0, y0 ) is any point on the line and m != 0
  *
  * @author Nate J, Avi D.
- * @version February 10, 2025
+ * @version February 26, 2025
  */
 public class PointSlope extends Linear
 {
