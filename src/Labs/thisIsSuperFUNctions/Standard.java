@@ -20,11 +20,11 @@ public class Standard extends Linear
      */
     public Standard( int A, int B, int C )
     {
+        super( ( double )( -A ) / B, ( ( double )C ) / B );
+
         this.A = A;
         this.B = B;
         this.C = C;
-
-        super( ( double )( -A ) / B, ( ( double )C ) / B );
     }
 
     /**

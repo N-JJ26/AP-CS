@@ -18,10 +18,10 @@ public class Factored extends Quadratic
      */
     public Factored(int p, int q)
     {
+        super(1, -( p + q ), p * q);
+
         this.p = p;
         this.q = q;
-
-        super(1, -( p + q ), p * q);
     }
 
     /**
