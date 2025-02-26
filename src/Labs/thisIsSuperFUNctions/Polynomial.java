@@ -155,9 +155,9 @@ public class Polynomial extends Function
      *
      * @return the y-int = ( 0, a(0) )
      */
-    public double yIntercept()
+    public Point yIntercept()
     {
-        return a[ 0 ];
+        return new Point( 0, fOf( 0 ) );
     }
 
     /**
@@ -192,7 +192,7 @@ public class Polynomial extends Function
         double[] copy = new double[ a.length ];
         for( int i = 0; i < copy.length; i++ )
             copy[ i ] = a[ i ];
-        return a;
+        return copy;
     }
 
     /**
@@ -333,10 +333,13 @@ public class Polynomial extends Function
         int longer = 0;
         int shorter = 0;
 
-        if( a.coefficients().length > b.coefficients().length ) {
+        if( a.coefficients().length > b.coefficients().length )
+        {
             longer = a.coefficients().length;
             shorter = b.coefficients().length;
-        } else {
+        }
+        else
+        {
             longer = b.coefficients().length;
             shorter = a.coefficients().length;
         }
@@ -357,15 +360,5 @@ public class Polynomial extends Function
                 multiplier * a.coefficients()[ i ];
 
         return new Polynomial( c );
-    }
-
-    public void test() {
-        for (double d : a) {
-            System.out.print(d + " ");
-        }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Quadratic().equals(new Quadratic(1, 0, 0)));
     }
 }
