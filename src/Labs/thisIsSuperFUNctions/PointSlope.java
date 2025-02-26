@@ -20,9 +20,16 @@ public class PointSlope extends Linear
      */
     public PointSlope( Point point, double slope )
     {
-        super( slope, slope * point.getX() + point.getY() );
+        super( slope, slope * checkPoint( point ).getX() + checkPoint( point ).getY() );
 
-        this.point = point;
+        this.point = checkPoint(point);
+    }
+
+    private static Point checkPoint( Point p )
+    {
+        if( p == null )
+            return new Point();
+        return p;
     }
 
     /**

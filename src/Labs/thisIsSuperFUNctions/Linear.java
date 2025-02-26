@@ -34,6 +34,6 @@ public class Linear extends Polynomial
      */
     public double slope()
     {
-        return this.leadingCoefficient();
+        return this.fPrimeOf( 0 );
     }
 }

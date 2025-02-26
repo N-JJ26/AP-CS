@@ -4,14 +4,14 @@ package src.Labs.thisIsSuperFUNctions;
  * Quadratic Polynomial Function in standard form a*x^2 + b*x + c
  *
  * @author Nate J, Avi D.
- * @version February 12, 2025
+ * @version February 26, 2025
  */
 public class Quadratic extends Polynomial
 {
     /**
      * Constructs a Quadratic Polynomial Function of the form a*x^2 + b*x + c
      *
-     * @param a the coefficient of the squared te4rm ( !=0 )
+     * @param a the coefficient of the squared term ( !=0 )
      * @param b the coefficient of the linear-term
      * @param c the constant
      */

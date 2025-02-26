@@ -6,7 +6,7 @@ package src.Labs.thisIsSuperFUNctions;
  *  real when n == 0 a(n)*x^n + a(n-1)*x^(n-1) + ... + a(1)*x + a(0)
  *
  * @author Avi D, Nate J
- * @version February 14, 2025
+ * @version February 26, 2025
  */
 public class Polynomial extends Function
 {
@@ -85,7 +85,7 @@ public class Polynomial extends Function
 
     /**
      * Returns the open interval of x-values on which the function is
-     8 increasing, i.e. slope > 0.0, if none exist, returns an empty array, {}
+     *  8 increasing, i.e. slope > 0.0, if none exist, returns an empty array, {}
      *
      * @return the open interval of x-values on which the function is increasing,
      *  i.e. slope > 0.0
@@ -346,14 +346,13 @@ public class Polynomial extends Function
 
         double[] c = new double[ longer ];
 
+        double multiplier = add ? 1 : -1;
         for( int i = 0; i < shorter; i++ )
-            c[ i ] = add ? a.coefficients()[ i ] + b.coefficients()[ i ] :
-                        a.coefficients()[ i ] - b.coefficients()[ i ];
+            c[ i ] = a.coefficients()[ i ] + ( multiplier * b.coefficients()[ i ] );
 
         if( longer == shorter )
             return new Polynomial( c );
 
-        double multiplier = add ? 1 : -1 ;
         for( int i = shorter; i < longer; i++ )
             c[i] = longer == b.coefficients().length ?
                 multiplier * b.coefficients()[ i ] :
