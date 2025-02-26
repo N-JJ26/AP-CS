@@ -4,7 +4,7 @@ package src.Labs.thisIsSuperFUNctions;
  * Linear Polynomial Function in slope-intercept form m*x + b
  *
  * @author Avi D. Nate J.
- * @version February 12, 2025
+ * @version February 26, 2025
  */
 public class Linear extends Polynomial
 {
