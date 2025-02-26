@@ -29,13 +29,13 @@ public class Polynomial extends Function
             a = coefficients;
             return;
         }
-        else
-            for( int i = coefficients.length - 1; i >= 0; i-- )
-                if( Math.abs( coefficients[ i ] - 0.0 ) > Calc.EPSILON )
-                {
-                    count = i;
-                    break;
-                }
+        
+        for( int i = coefficients.length - 1; i >= 0; i-- )
+            if( Math.abs( coefficients[ i ] - 0.0 ) > Calc.EPSILON )
+            {
+                count = i;
+                break;
+            }
 
         double[] newCoeff = new double[ count + 1 ];
 
@@ -43,7 +43,8 @@ public class Polynomial extends Function
             newCoeff[ i ] = coefficients[ i ];
 
         a = newCoeff;
-}
+    }
+
     /**
      * Compares the average value of this Polynomial to an
      *  other Polynomial over a given closed interval [ a, b ], where a <= b
@@ -64,8 +65,7 @@ public class Polynomial extends Function
         if( Calc.areaUnder( this, a, b ) / ( b - a )
             < Calc.areaUnder( other, a, b ) / ( b - a ))
             return -1;
-        else
-            return 0;
+        return 0;
     }
 
     /**
@@ -75,11 +75,13 @@ public class Polynomial extends Function
      * @param other the "other" Polynomial against this Polynomial
      * @param interval the closed interval for this comparison [ a,b ]
      * @return -1 if this Polynomial is less than the explicit parameter Object,
-     *  0 if equal, and +1 if this is greater than other or null or 
+     *  0 if equal, and +1 if this is greater than other or null or
      *  the interval is not closed.
      */
     public int compareTo( Polynomial other, Interval interval )
     {
+        if( !( interval.leftIncluded() && interval.rightIncluded() ) )
+            return 1;
         return this.compareTo( other, interval.getLeftBound(), interval.getRightBound() );
     }
 
@@ -111,7 +113,7 @@ public class Polynomial extends Function
     {
         double sum = 0;
         for( int i = 0; i < a.length; i++ ) {
-            sum += a[ i ] * Math.pow( x, ( double )i );
+            sum += a[ i ] * Math.pow( x, i );
         }
         return sum;
     }
@@ -204,6 +206,8 @@ public class Polynomial extends Function
      */
     public boolean isOnCurve( Point p )
     {
+        if( p == null )
+            return false;
         return Math.abs( fOf( p.getX() ) - p.getY() ) < Calc.EPSILON;
     }
 
@@ -231,7 +235,7 @@ public class Polynomial extends Function
      */
     public String toString()
     {
-        String str = "y = ";
+        String str = super.toString();
 
         if( a.length == 0 )
             str += "0";
@@ -279,10 +283,10 @@ public class Polynomial extends Function
         String str = "";
         String num = Calc.clean( a[ 0 ] );
 
-        if( Math.abs( a[ 0 ] - 0.0 ) < Calc.EPSILON &&
-            Math.abs( a[ 1 ] - 0.0 ) < Calc.EPSILON )
+        if( Math.abs( a[ 0 ] - 0 ) < Calc.EPSILON &&
+            Math.abs( a[ 1 ] - 0 ) < Calc.EPSILON )
             return str;
-        if( Math.abs( a[ 1 ] - 0.0 ) < Calc.EPSILON )
+        if( Math.abs( a[ 1 ] - 0 ) < Calc.EPSILON )
             str += num;
         else if( Math.abs( a[ 0 ] - 0.0 ) < Calc.EPSILON )
             if( Math.abs( Math.abs( a[ 1 ] ) - 1.0 ) < Calc.EPSILON )
