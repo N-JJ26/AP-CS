@@ -44,10 +44,7 @@ public class Polynomial extends Function
 
         a = newCoeff;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 377179de911ec62089a1b296417d9b0fd34b2d18
     /**
      * Compares the average value of this Polynomial to an
      *  other Polynomial over a given closed interval [ a, b ], where a <= b
