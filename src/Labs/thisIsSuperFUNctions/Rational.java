@@ -1,5 +1,7 @@
 package src.Labs.thisIsSuperFUNctions;
 
+import java.util.ArrayList;
+
 public class Rational extends Function
 {
     private Polynomial numerator, denominator;
@@ -25,12 +27,46 @@ public class Rational extends Function
 
     public Point[] holes()
     {
-        
-        return null;
+        ArrayList< Point > numeratorInts = new ArrayList< Point >();
+        ArrayList< Point > denominatorInts = new ArrayList< Point >();
+
+        ArrayList< Double > xValues = new ArrayList< Double >();
+
+        for( Point point : numerator.xIntercepts() )
+            numeratorInts.add( point );
+
+        for( Point point : denominator.xIntercepts() )
+            denominatorInts.add( point );
+
+        for( int i = 0; i < numeratorInts.size(); i++ )
+            if( denominatorInts.contains( numeratorInts.get( i ) ) )
+                xValues.add( numeratorInts.get( i ).getX() );
+
+        Point[] holes = new Point[ xValues.size() ];
+
+        for( int i = 0; i < holes.length; i++ )
+            holes[ i ] = new Point( xValues.get( i ), lHopitalAt( xValues.get( i ) ) );
+
+        return holes;
+    }
+
+    private double lHopitalAt( double value )
+    {
+        return numerator.fPrimeOf( value ) / denominator.fPrimeOf( value );
     }
 
     public double[] asymptotes()
     {
-        return null;
+        ArrayList< Double > asymptotes = new ArrayList< Double >();
+
+        
+
+        return asymptotes();
+    }
+
+    public String toString()
+    {
+        return "y = (" + numerator.toString().substring( 7 )
+                + ")/(" + denominator.toString().substring( 7 ) + ")";
     }
 }
