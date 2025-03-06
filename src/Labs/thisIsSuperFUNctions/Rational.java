@@ -57,16 +57,34 @@ public class Rational extends Function
 
     public double[] asymptotes()
     {
-        ArrayList< Double > asymptotes = new ArrayList< Double >();
+        ArrayList< Point > numeratorInts = new ArrayList< Point >();
+        ArrayList< Point > denominatorInts = new ArrayList< Point >();
 
-        
+        ArrayList< Double > xValues = new ArrayList< Double >();
 
-        return asymptotes();
+        for( Point point : numerator.xIntercepts() )
+            numeratorInts.add( point );
+
+        for( Point point : denominator.xIntercepts() )
+            denominatorInts.add( point );
+
+        for( int i = 0; i < denominatorInts.size(); i++ )
+            if( !numeratorInts.contains( denominatorInts.get( i ) ) )
+                xValues.add( denominatorInts.get( i ).getX() );
+
+        double[] asymptotes = new double[ xValues.size() ];
+
+        for( int i = 0; i < asymptotes.length; i++ )
+            asymptotes[ i ] = xValues.get( i );
+
+        return asymptotes;
     }
 
     public String toString()
     {
-        return "y = (" + numerator.toString().substring( 7 )
-                + ")/(" + denominator.toString().substring( 7 ) + ")";
+        final int BEGINNING_INDEX = 7;
+
+        return "y = (" + numerator.toString().substring( BEGINNING_INDEX )
+                + ")/(" + denominator.toString().substring( BEGINNING_INDEX ) + ")";
     }
 }
