@@ -148,6 +148,7 @@ public class Interval
      * 
      * @return ex. [ a, b ] or ( a, b ] or ( -inf, +inf ), etc
      */
+    @SuppressWarnings("removal") //no wanna get yelled at
     public String toString()
     {
         String str = "";
