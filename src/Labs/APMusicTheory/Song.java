@@ -6,6 +6,6 @@ package src.Labs.APMusicTheory;
  * @author Nate Johnson
  * @version 3/11/25
  */
-public class Song {
+public class Song /* implements ... */ {
     private Note[][] notes;
 }
